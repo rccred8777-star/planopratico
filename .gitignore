@@ -1,0 +1,15 @@
+# Segredos e credenciais
+stacks/wacrm/.env
+.claude/
+
+# Dados de runtime Docker
+volumes/
+backups/
+logs/
+
+# Código-fonte WaCRM (repositório separado upstream)
+stacks/wacrm/source/
+
+# Arquivos compactados e logs
+*.tar.gz
+*.log
