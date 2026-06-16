@@ -1,5 +1,6 @@
 # Segredos e credenciais
 stacks/wacrm/.env
+stacks/dogflow/.env
 .claude/
 
 # Dados de runtime Docker
@@ -9,6 +10,12 @@ logs/
 
 # Código-fonte WaCRM (repositório separado upstream)
 stacks/wacrm/source/
+
+# Dependências e builds Node.js
+node_modules/
+.next/
+dist/
+.turbo/
 
 # Arquivos compactados e logs
 *.tar.gz

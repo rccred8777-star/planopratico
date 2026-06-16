@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta name="facebook-domain-verification" content="z0imy7w2le8mzk5jkq61iglvn1hjv5" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Descubra o Plano de Treino do Seu Cão — DogFlow</title>
+  <meta name="description" content="Responda 5 perguntas e receba um plano de treino personalizado para o seu cão. Gratuito. Resultado imediato." />
+  <meta name="robots" content="noindex" />
+
+  <!-- Pixel Meta — PageView -->
+  <!-- SUBSTITUIR: colar script Pixel Meta aqui -->
+
+  <!-- Vturb preloads (carrega antes para o player não travar na tela de resultado) -->
+  <link rel="preload" href="https://scripts.converteai.net/a8afe151-e15b-4b4c-b570-59fdd67b5456/players/6a30530b1ead4fb7a53cdaf0/v4/player.js" as="script">
+  <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+  <link rel="dns-prefetch" href="https://cdn.converteai.net">
+  <link rel="dns-prefetch" href="https://scripts.converteai.net">
+  <link rel="dns-prefetch" href="https://images.converteai.net">
+  <link rel="dns-prefetch" href="https://license.vturb.com">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --brand:       #ff7a11;
+      --brand-dark:  #e06000;
+      --brand-light: #fff4eb;
+      --brand-50:    #fff8f0;
+      --surface:     #FAFAF7;
+      --text:        #1a1a1a;
+      --muted:       #6b7280;
+      --border:      #e5e7eb;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--surface);
+      color: var(--text);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Wrapper ── */
+    .quiz-wrap {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      background: var(--brand);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .topbar-logo {
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .topbar-paw { font-size: 1.2rem; }
+
+    /* ── Progress bar ── */
+    .progress-bar-wrap {
+      height: 4px;
+      background: #f0f0f0;
+      flex-shrink: 0;
+    }
+    .progress-bar {
+      height: 100%;
+      background: var(--brand);
+      transition: width 0.4s ease;
+    }
+
+    /* ── Screens ── */
+    .screen {
+      display: none;
+      flex: 1;
+      flex-direction: column;
+      padding: 28px 22px 32px;
+      animation: slideIn 0.3s ease;
+    }
+    .screen.active { display: flex; }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(18px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* ── Intro screen ── */
+    .intro-emoji { font-size: 4rem; text-align: center; margin-bottom: 12px; }
+    .intro-pill {
+      display: inline-block;
+      background: var(--brand-light);
+      color: var(--brand);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .intro-title {
+      font-size: 1.65rem;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .intro-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .intro-checklist { list-style: none; margin-bottom: 32px; }
+    .intro-checklist li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: #374151;
+      padding: 7px 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .intro-checklist li:last-child { border-bottom: none; }
+    .chk { color: var(--brand); font-weight: 700; font-size: 1rem; }
+
+    /* ── Step label ── */
+    .step-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--brand);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    /* ── Question ── */
+    .q-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .q-sub {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 22px;
+    }
+
+    /* ── Text input ── */
+    .text-input {
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 1.05rem;
+      font-family: inherit;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    .text-input:focus { border-color: var(--brand); }
+    .text-input::placeholder { color: #9ca3af; }
+
+    /* ── Option cards ── */
+    .options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.15s;
+      background: #fff;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    .option:active { transform: scale(0.98); }
+    .option.selected {
+      border-color: var(--brand);
+      background: var(--brand-50);
+    }
+    .option-emoji { font-size: 1.4rem; flex-shrink: 0; }
+    .option-text {
+      font-size: 0.92rem;
+      font-weight: 500;
+      line-height: 1.35;
+      color: #374151;
+    }
+    .option.selected .option-text { color: var(--brand-dark); font-weight: 600; }
+    .option-radio {
+      margin-left: auto;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }
+    .option.selected .option-radio {
+      border-color: var(--brand);
+      background: var(--brand);
+    }
+    .option.selected .option-radio::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    /* ── CTA Button ── */
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 16px;
+      background: var(--brand);
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      box-shadow: 0 4px 16px rgba(255, 122, 17, 0.3);
+    }
+    .btn:hover { background: var(--brand-dark); }
+    .btn:active { transform: scale(0.98); }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      box-shadow: none;
+      border: 2px solid var(--border);
+      font-size: 0.88rem;
+      margin-top: 10px;
+    }
+    .btn-ghost:hover { background: #f9fafb; }
+
+    /* ── Email screen ── */
+    .email-box {
+      background: var(--brand-light);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 22px;
+    }
+    .email-box-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; }
+    .email-box-sub   { font-size: 0.83rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── Loading screen ── */
+    #screen-loading {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 24px;
+    }
+    .loader-emoji { font-size: 3.5rem; animation: pulse 1.2s ease-in-out infinite; }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.1); }
+    }
+    .loader-title { font-size: 1.3rem; font-weight: 800; }
+    .loader-steps { list-style: none; text-align: left; width: 100%; }
+    .loader-step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f3f4f6;
+      font-size: 0.88rem;
+      color: var(--muted);
+      transition: color 0.4s;
+    }
+    .loader-step.done  { color: #059669; }
+    .loader-step.active { color: var(--brand); font-weight: 600; }
+    .step-dot {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem;
+      transition: all 0.3s;
+    }
+    .loader-step.done  .step-dot { background: #059669; border-color: #059669; color: #fff; }
+    .loader-step.active .step-dot { background: var(--brand); border-color: var(--brand); color: #fff; animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Result screen ── */
+    #screen-result { gap: 0; padding-top: 0; }
+
+    /* VSL Player */
+    .vsl-wrap {
+      margin: 0 -22px 0;
+      background: #0f0f0f;
+    }
+    .vsl-label {
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 10px 16px 6px;
+    }
+    .vsl-player-box { width: 100%; line-height: 0; }
+
+    /* Body wrapper */
+    .result-body-wrap { padding: 0 0 32px; }
+
+    /* ── Section divider ── */
+    .res-section {
+      margin: 24px 0 16px;
+    }
+    .res-section-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: #9ca3af;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .res-section-label::before,
+    .res-section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e5e7eb;
+    }
+
+    /* ── Personalised header ── */
+    .result-hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      margin: 0 -22px;
+      padding: 22px 22px 20px;
+      text-align: center;
+    }
+    .result-hero-tag {
+      display: inline-block;
+      background: var(--brand);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+    .result-title {
+      font-size: 1.2rem;
+      font-weight: 900;
+      line-height: 1.25;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .result-sub {
+      font-size: 0.82rem;
+      color: var(--brand);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Stars proof card ── */
+    .result-proof {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 14px 16px;
+      margin-bottom: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .proof-stars {
+      color: #f59e0b;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .proof-text {
+      font-size: 0.84rem;
+      line-height: 1.6;
+      color: #374151;
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+    .proof-author {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #6b7280;
+    }
+    .proof-dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; }
+
+    /* ── Diagnosis card ── */
+    .diag-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      overflow: hidden;
+      margin-bottom: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .diag-card-header {
+      background: linear-gradient(135deg, var(--brand) 0%, #ff9a3c 100%);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .diag-card-header-icon { font-size: 1.1rem; }
+    .diag-card-header-title {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .diag-card-body {
+      padding: 14px 16px;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: #374151;
+    }
+
+    /* ── Villain card ── */
+    .villain-card {
+      background: #fffbeb;
+      border-radius: 16px;
+      border: 1px solid #fde68a;
+      padding: 16px;
+      margin-bottom: 0;
+    }
+    .villain-card-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .villain-badge {
+      background: #f59e0b;
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .villain-card p {
+      font-size: 0.87rem;
+      line-height: 1.7;
+      color: #78350f;
+    }
+
+    /* ── Benefit grid ── */
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 0;
+    }
+    .benefit-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 14px 12px;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .benefit-card-icon { font-size: 1.6rem; margin-bottom: 6px; }
+    .benefit-card-text {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #374151;
+      line-height: 1.35;
+    }
+
+    /* ── Bonus strip ── */
+    .bonus-strip {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 0;
+    }
+    .bonus-strip-title {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .bonus-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .bonus-item:last-child { border-bottom: none; }
+    .bonus-check {
+      width: 20px; height: 20px;
+      background: var(--brand);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem;
+      color: #fff;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+    .bonus-text {
+      font-size: 0.82rem;
+      color: #e2e8f0;
+      line-height: 1.35;
+      flex: 1;
+    }
+    .bonus-tag {
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: #94a3b8;
+      background: rgba(255,255,255,0.08);
+      padding: 2px 7px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    /* ── Price comparison ── */
+    .price-compare {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .price-compare-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 16px;
+      border-bottom: 1px solid #f3f4f6;
+      font-size: 0.84rem;
+    }
+    .price-compare-row:last-child { border-bottom: none; }
+    .price-compare-row.highlight {
+      background: var(--brand-50);
+      border-color: #fed7aa;
+    }
+    .pcr-label { color: #6b7280; }
+    .pcr-label strong { color: var(--text); font-weight: 700; }
+    .pcr-price {
+      font-weight: 700;
+      color: #9ca3af;
+      text-decoration: line-through;
+      font-size: 0.84rem;
+    }
+    .pcr-price.you { color: var(--brand); text-decoration: none; font-size: 1rem; font-weight: 900; }
+
+    /* ── CTA box ── */
+    .result-cta-box {
+      background: linear-gradient(160deg, #1a1a2e 0%, var(--brand-dark) 100%);
+      border-radius: 20px;
+      padding: 24px 20px 20px;
+      text-align: center;
+      margin-bottom: 0;
+      box-shadow: 0 12px 32px rgba(255,122,17,0.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .result-cta-box::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 120px; height: 120px;
+      background: rgba(255,122,17,0.12);
+      border-radius: 50%;
+    }
+    .cta-exclusive-badge {
+      display: inline-block;
+      background: var(--brand);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .price-anchor {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+    .price-original {
+      color: rgba(255,255,255,0.4);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: line-through;
+    }
+    .price-reason {
+      background: rgba(255,122,17,0.25);
+      color: var(--brand);
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(255,122,17,0.4);
+    }
+    .result-price {
+      color: #fff;
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 2px;
+      letter-spacing: -0.02em;
+    }
+    .result-price span { font-size: 1.2rem; font-weight: 500; }
+    .result-price-sub {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.72rem;
+      margin-bottom: 18px;
+    }
+    .btn-white {
+      background: #fff;
+      color: var(--brand);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      font-size: 1.05rem !important;
+      font-weight: 800 !important;
+      animation: pulse-btn 2s ease-in-out infinite;
+    }
+    @keyframes pulse-btn {
+      0%, 100% { box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+      50%       { box-shadow: 0 6px 28px rgba(255,122,17,0.5); }
+    }
+    .btn-white:hover { background: #fff8f0; animation: none; }
+
+    /* ── Guarantee badge ── */
+    .guarantee-badge {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #fff;
+      border: 2px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 14px 16px;
+      margin-bottom: 0;
+    }
+    .guarantee-icon {
+      font-size: 2.2rem;
+      flex-shrink: 0;
+    }
+    .guarantee-title {
+      font-weight: 800;
+      font-size: 0.88rem;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+    .guarantee-text {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .result-urgency {
+      text-align: center;
+      font-size: 0.76rem;
+      color: #dc2626;
+      font-weight: 700;
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .urgency-dot {
+      width: 6px; height: 6px;
+      background: #dc2626;
+      border-radius: 50%;
+      animation: blink 1.2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    /* ── Utility ── */
+    .spacer { flex: 1; }
+    .mt-auto { margin-top: auto; }
+    .disclaimer {
+      font-size: 0.72rem;
+      color: #9ca3af;
+      line-height: 1.5;
+      text-align: center;
+      padding-top: 16px;
+      border-top: 1px solid #f3f4f6;
+      margin-top: 20px;
+    }
+
+    /* ── Hero dog image ── */
+    .intro-hero {
+      margin: -28px -22px 22px;
+      border-radius: 0 0 28px 28px;
+      overflow: hidden;
+      height: 240px;
+      position: relative;
+      background: linear-gradient(135deg, #ff9a3c, #ff7a11);
+      flex-shrink: 0;
+    }
+    .intro-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+    .intro-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.35) 100%);
+    }
+    .intro-hero-badge {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 999px;
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      letter-spacing: 0.01em;
+    }
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px rgba(34,197,94,0.25);
+    }
+
+    /* ── Improved intro title ── */
+    .intro-title {
+      font-size: 1.7rem !important;
+      font-weight: 900 !important;
+      line-height: 1.18 !important;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px !important;
+    }
+    .intro-sub {
+      font-size: 0.97rem !important;
+    }
+
+    /* ── Improved checklist ── */
+    .intro-checklist li {
+      gap: 12px !important;
+      padding: 9px 0 !important;
+      font-size: 0.92rem !important;
+      font-weight: 500;
+    }
+    .chk {
+      width: 22px;
+      height: 22px;
+      background: var(--brand);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff !important;
+      font-size: 0.7rem !important;
+      flex-shrink: 0;
+    }
+
+    /* ── Improved option cards ── */
+    .option {
+      border-radius: 16px !important;
+      padding: 15px 16px !important;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .option:hover {
+      border-color: #d1d5db;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+
+    /* ── Improved btn ── */
+    .btn {
+      border-radius: 16px !important;
+      font-size: 1.02rem !important;
+      letter-spacing: 0.01em;
+    }
+  </style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");
+fbq("init","1076171898074575");fbq("track","PageView");
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1076171898074575&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+</head>
+<body>
+<div class="quiz-wrap">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-logo">
+      <span class="topbar-paw">🐾</span> DogFlow
+    </div>
+    <span style="color:rgba(255,255,255,0.8);font-size:0.78rem;font-weight:500;">Plano Prático Dog</span>
+  </div>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar-wrap">
+    <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+  </div>
+
+  <!-- ─── SCREEN 0: INTRO ─────────────────────────────────────── -->
+  <div class="screen active" id="screen-intro">
+
+    <div class="intro-hero">
+      <img
+        src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=800&q=85&fit=crop&crop=center"
+        alt="Cão feliz com tutor treinando"
+        loading="eager"
+        onerror="this.style.display='none'"
+      />
+      <div class="intro-hero-overlay"></div>
+      <div class="intro-hero-badge">
+        <span class="badge-dot"></span>
+        Diagnóstico gratuito · resultado em 2 minutos
+      </div>
+    </div>
+
+    <span class="intro-pill">🐾 método de reforço positivo</span>
+    <h1 class="intro-title">Descubra o plano de treino personalizado para o seu cão</h1>
+    <p class="intro-sub">Responda 5 perguntas rápidas e veja exatamente o que fazer para corrigir o comportamento do seu cão em 7 dias.</p>
+
+    <ul class="intro-checklist">
+      <li><span class="chk">✓</span> 100% gratuito — sem cadastro</li>
+      <li><span class="chk">✓</span> Leva menos de 2 minutos</li>
+      <li><span class="chk">✓</span> Resultado personalizado pelo problema do seu cão</li>
+      <li><span class="chk">✓</span> Sem punição — só reforço positivo</li>
+    </ul>
+
+    <div class="spacer"></div>
+    <button class="btn" onclick="goTo(1)">Fazer meu diagnóstico grátis →</button>
+    <p style="text-align:center;font-size:0.75rem;color:var(--muted);margin-top:10px;">5 perguntas · menos de 2 minutos</p>
+  </div>
+
+  <!-- ─── SCREEN 1: NOME DO CÃO ───────────────────────────────── -->
+  <div class="screen" id="screen-1">
+    <div class="step-label">Pergunta 1 de 5</div>
+    <h2 class="q-title">Qual é o nome do seu cão?</h2>
+    <p class="q-sub">Vamos personalizar o plano para ele.</p>
+    <input
+      type="text"
+      class="text-input"
+      id="input-dog-name"
+      placeholder="Ex: Rex, Luna, Bolinha..."
+      maxlength="30"
+      autocomplete="off"
+      oninput="checkQ1()"
+    />
+    <div class="spacer"></div>
+    <button class="btn" id="btn-q1" disabled onclick="goTo(2)">Continuar →</button>
+  </div>
+
+  <!-- ─── SCREEN 2: IDADE ──────────────────────────────────────── -->
+  <div class="screen" id="screen-2">
+    <div class="step-label">Pergunta 2 de 5</div>
+    <h2 class="q-title" id="q2-title">Qual a idade do seu cão?</h2>
+    <p class="q-sub">A abordagem varia um pouco por fase de vida.</p>
+    <div class="options" id="opts-2">
+      <div class="option" onclick="selectOption(2, 'filhote', this)">
+        <span class="option-emoji">🐾</span>
+        <span class="option-text">Filhote — até 1 ano de idade</span>
+        <div class="option-radio"></div>
+      </div>
+      <div class="option" onclick="selectOption(2, 'jovem', this)">
+        <span class="option-emoji">🦮</span>
+        <span class="option-text">Jovem — 1 a 3 anos</span>
+        <div class="option-radio"></div>
+      </div>
+      <div class="option" onclick="selectOption(2, 'adulto', this)">
+        <span class="option-emoji">🐕</span>
+        <span class="option-text">Adulto — 3 a 7 anos</span>
+        <div class="option-radio"></div>
+      </div>
+      <div class="option" onclick="selectOption(2, 'senior', this)">
+        <span class="option-emoji">🦴</span>
+        <span class="option-text">Sênior — acima de 7 anos</span>
+        <div class="option-radio"></div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <button class="btn" id="btn-q2" disabled onclick="goTo(3)">Continuar →</button>
+    <button class="btn btn-ghost" onclick="goTo(1)">← Voltar</button>
+  </div>
+
+  <!-- ─── SCREEN 3: PROBLEMA ──────────────────────────────────── -->
+  <div class="screen" id="screen-3">
+    <div class="step-label">Pergunta 3 de 5</div>
+    <h2 class="q-title" id="q3-title">Qual comportamento mais te estressa?</h2>
+    <p class="q-sub">Escolha o que mais impacta sua rotina hoje.</p>
+    <div class="options" id="opts-3">
+      <div class="option" onclick="selectOption(3, 'xixi', this)">
+        <span class="option-emoji">💧</span>
+        <span class="option-text">Faz xixi ou cocô fora do lugar</span>
+        <div class="option-radio"></div>
+      </div>
+      <div class="option" onclick="selectOption(3, 'guia', this)">
+        <span class="option-emoji">🦮</span>
+        <span class="option-text">Puxa demais na guia durante o passeio</span>
+        <div class="option-radio"></div>
+      </div>
+      <div class="option" onclick="selectOption(3, 'latido', this)">
+        <span class="option-emoji">🔊</span>
+        <span class="option-text">Late sem parar — vizinhos, visitas, qualquer coisa</span>
+        <div class="option-radio"></div>
+      </div>
+      <div class="option" onclick="selectOption(3, 'pulo', this)">
+        <span class="option-emoji">🦘</span>
+        <span class="option-text">Pula em todo mundo na hora de cumprimentar</span>
+        <div class="option-radio"></div>
+      </div>
+      <div class="option" onclick="selectOption(3, 'destroi', this)">
+        <span class="option-emoji">😤</span>
+        <span class="option-text">Destrói objetos, roupa, móveis quando sozinho</span>
+        <div class="option-radio"></div>
+      </div>
+      <div class="option" onclick="selectOption(3, 'desobedece', this)">
+        <span class="option-emoji">🙈</span>
+        <span class="option-text">Não obedece nenhum comando básico</span>
+        <div class="option-radio"></div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <button class="btn" id="btn-q3" disabled onclick="goTo(4)">Continuar →</button>
+    <button class="btn btn-ghost" onclick="goTo(2)">← Voltar</button>
+  </div>
+
+  <!-- ─── SCREEN 4: IMPACTO ────────────────────────────────────── -->
+  <div class="screen" id="screen-4">
+    <div class="step-label">Pergunta 4 de 5</div>
+    <h2 class="q-title" id="q4-title">Como isso afeta sua relação com ele?</h2>
+    <p class="q-sub">Sem julgamento — queremos entender de verdade.</p>
+    <div class="options" id="opts-4">
+      <div class="option" onclick="selectOption(4, 'estresso', this)">
+        <span class="option-emoji">😤</span>
+        <span class="option-text">Me estresso e perco a paciência com frequência</span>
+        <div class="option-radio"></div>
+      </div>
+      <div class="option" onclick="selectOption(4, 'vergonha', this)">
+        <span class="option-emoji">😳</span>
+        <span class="option-text">Evito levar a lugares por vergonha do comportamento</span>
+        <div class="option-radio"></div>
+      </div>
+      <div class="option" onclick="selectOption(4, 'familia', this)">
+        <span class="option-emoji">👨‍👩‍👧</span>
+        <span class="option-text">Minha família ou parceiro reclamam do cão</span>
+        <div class="option-radio"></div>
+      </div>
+      <div class="option" onclick="selectOption(4, 'limite', this)">
+        <span class="option-emoji">💔</span>
+        <span class="option-text">Já pensei em desistir, mas amo demais para isso</span>
+        <div class="option-radio"></div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <button class="btn" id="btn-q4" disabled onclick="goTo(5)">Continuar →</button>
+    <button class="btn btn-ghost" onclick="goTo(3)">← Voltar</button>
+  </div>
+
+  <!-- ─── SCREEN 5: COMPROMETIMENTO ──────────────────────────── -->
+  <div class="screen" id="screen-5">
+    <div class="step-label">Pergunta 5 de 5</div>
+    <h2 class="q-title" id="q5-title">Se você tivesse um plano claro, estaria disposto a dedicar 10 minutos por dia durante 7 dias?</h2>
+    <p class="q-sub">Sem equipamento. Sem adestrador. Só você e ele.</p>
+    <div class="options" id="opts-5">
+      <div class="option" onclick="selectOption(5, 'sim-total', this)">
+        <span class="option-emoji">💪</span>
+        <span class="option-text">Sim, com certeza — estou determinado a resolver isso</span>
+        <div class="option-radio"></div>
+      </div>
+      <div class="option" onclick="selectOption(5, 'sim-provavelmente', this)">
+        <span class="option-emoji">😊</span>
+        <span class="option-text">Provavelmente sim — quero tentar com um método que funcione</span>
+        <div class="option-radio"></div>
+      </div>
+      <div class="option" onclick="selectOption(5, 'sim-duvidas', this)">
+        <span class="option-emoji">🤔</span>
+        <span class="option-text">Quero tentar — preciso que seja simples e rápido</span>
+        <div class="option-radio"></div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <button class="btn" id="btn-q5" disabled onclick="goTo('email')">Ver meu plano personalizado →</button>
+    <button class="btn btn-ghost" onclick="goTo(4)">← Voltar</button>
+  </div>
+
+  <!-- ─── SCREEN EMAIL ─────────────────────────────────────────── -->
+  <div class="screen" id="screen-email">
+    <div style="text-align:center;font-size:3rem;margin-bottom:16px;">📋</div>
+    <h2 class="q-title" style="text-align:center">Seu plano está quase pronto!</h2>
+    <p class="q-sub" style="text-align:center;margin-bottom:22px;">Informe seu nome e e-mail para receber o acesso.</p>
+
+    <div class="email-box">
+      <div class="email-box-title">🔒 Por que pedimos isso?</div>
+      <div class="email-box-sub">Para enviar seu plano personalizado e garantir seu acesso ao programa quando você decidir começar.</div>
+    </div>
+
+    <label style="font-size:0.85rem;font-weight:600;color:#374151;display:block;margin-bottom:6px;">Seu nome</label>
+    <input
+      type="text"
+      class="text-input"
+      id="input-user-name"
+      placeholder="Como posso te chamar?"
+      autocomplete="given-name"
+      oninput="checkEmail()"
+      style="margin-bottom:14px"
+    />
+
+    <label style="font-size:0.85rem;font-weight:600;color:#374151;display:block;margin-bottom:6px;">Seu melhor e-mail</label>
+    <input
+      type="email"
+      class="text-input"
+      id="input-email"
+      placeholder="email@exemplo.com"
+      autocomplete="email"
+      oninput="checkEmail()"
+      style="margin-bottom:20px"
+    />
+
+    <button class="btn" id="btn-email" disabled onclick="startLoading()">Ver meu plano agora →</button>
+
+    <p class="disclaimer">
+      Sem spam. Seu e-mail é usado apenas para enviar o acesso ao programa.
+      Ao continuar, você concorda com nossa política de privacidade.
+    </p>
+  </div>
+
+  <!-- ─── SCREEN LOADING ───────────────────────────────────────── -->
+  <div class="screen" id="screen-loading">
+    <div class="loader-emoji" id="loader-emoji">🔍</div>
+    <div class="loader-title">Analisando suas respostas...</div>
+    <ul class="loader-steps">
+      <li class="loader-step" id="lstep-1">
+        <div class="step-dot" id="ldot-1">◌</div>
+        Identificando o perfil do seu cão
+      </li>
+      <li class="loader-step" id="lstep-2">
+        <div class="step-dot" id="ldot-2">◌</div>
+        Selecionando a abordagem ideal
+      </li>
+      <li class="loader-step" id="lstep-3">
+        <div class="step-dot" id="ldot-3">◌</div>
+        Montando o plano de 7 dias
+      </li>
+      <li class="loader-step" id="lstep-4">
+        <div class="step-dot" id="ldot-4">◌</div>
+        Preparando seu diagnóstico personalizado
+      </li>
+    </ul>
+  </div>
+
+  <!-- ─── SCREEN RESULT ────────────────────────────────────────── -->
+  <div class="screen" id="screen-result">
+
+    <!-- VSL PLAYER -->
+    <div class="vsl-wrap">
+      <p class="vsl-label">▶ assista — seu plano personalizado está aqui</p>
+      <div class="vsl-player-box">
+        <vturb-smartplayer id="vid-6a30530b1ead4fb7a53cdaf0" style="display:block;margin:0 auto;width:100%;"></vturb-smartplayer>
+        <script type="text/javascript">
+          (function(){
+            var s=document.createElement("script");
+            s.src="https://scripts.converteai.net/a8afe151-e15b-4b4c-b570-59fdd67b5456/players/6a30530b1ead4fb7a53cdaf0/v4/player.js";
+            s.async=true;
+            document.head.appendChild(s);
+          })();
+        </script>
+      </div>
+    </div>
+
+    <div class="result-body-wrap">
+
+      <!-- HERO PERSONALIZADO -->
+      <div class="result-hero">
+        <div class="result-hero-tag">🎯 diagnóstico pronto</div>
+        <div class="result-title" id="result-title">Plano pronto!</div>
+        <div class="result-sub"  id="result-sub">Diagnóstico personalizado para o seu cão</div>
+      </div>
+
+      <!-- PROVA SOCIAL -->
+      <div class="res-section" style="padding:0 22px;">
+        <div class="result-proof">
+          <div class="proof-stars">★★★★★</div>
+          <div class="proof-text" id="proof-text">"Eu tinha tentado de tudo. O que me surpreendeu foi a rapidez — em 3 dias eu já via diferença. O método é diferente de tudo que já tentei."</div>
+          <div class="proof-author">
+            <span class="proof-dot"></span>
+            <span id="proof-name">Tutores com o mesmo perfil</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIAGNÓSTICO -->
+      <div class="res-section" style="padding:0 22px;">
+        <div class="res-section-label">o que descobrimos</div>
+        <div class="diag-card">
+          <div class="diag-card-header">
+            <span class="diag-card-header-icon">📊</span>
+            <span class="diag-card-header-title">Diagnóstico do seu cão</span>
+          </div>
+          <div class="diag-card-body" id="result-diagnosis">Carregando...</div>
+        </div>
+      </div>
+
+      <!-- VILÃO OCULTO -->
+      <div style="padding:0 22px;">
+        <div class="villain-card">
+          <div class="villain-card-top">
+            <span style="font-size:1.1rem;">💡</span>
+            <span class="villain-badge">Por que acontece isso</span>
+          </div>
+          <p id="result-villain">Carregando...</p>
+        </div>
+      </div>
+
+      <!-- O QUE VAI FUNCIONAR -->
+      <div class="res-section" style="padding:0 22px;">
+        <div class="res-section-label">a solução</div>
+        <div class="diag-card">
+          <div class="diag-card-header" style="background:linear-gradient(135deg,#059669,#10b981);">
+            <span class="diag-card-header-icon">✅</span>
+            <span class="diag-card-header-title">O que vai funcionar</span>
+          </div>
+          <div class="diag-card-body" id="result-solution">Carregando...</div>
+        </div>
+      </div>
+
+      <!-- BENEFIT GRID -->
+      <div class="res-section" style="padding:0 22px;">
+        <div class="res-section-label">o que você recebe</div>
+        <div class="benefit-grid">
+          <div class="benefit-card">
+            <div class="benefit-card-icon">📅</div>
+            <div class="benefit-card-text">7 dias de treino guiado</div>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-card-icon">⏱️</div>
+            <div class="benefit-card-text">10 minutos por dia</div>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-card-icon">📋</div>
+            <div class="benefit-card-text">Checklist diário com cada passo</div>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-card-icon">📱</div>
+            <div class="benefit-card-text">Acesso pelo celular, um dia de cada vez</div>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-card-icon">⚠️</div>
+            <div class="benefit-card-text">Erros comuns e como evitar</div>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-card-icon">🚫</div>
+            <div class="benefit-card-text">Sem punição — só reforço positivo</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BONUS STRIP -->
+      <div style="padding:0 22px; margin-top:10px;">
+        <div class="bonus-strip">
+          <div class="bonus-strip-title">🎁 5 guias bônus inclusos</div>
+          <div class="bonus-item">
+            <div class="bonus-check">✓</div>
+            <div class="bonus-text">Guia Xixi no Lugar Certo</div>
+            <div class="bonus-tag">PDF</div>
+          </div>
+          <div class="bonus-item">
+            <div class="bonus-check">✓</div>
+            <div class="bonus-text">Passeio Sem Puxar na Guia</div>
+            <div class="bonus-tag">PDF</div>
+          </div>
+          <div class="bonus-item">
+            <div class="bonus-check">✓</div>
+            <div class="bonus-text">Checklist Diário de Treino</div>
+            <div class="bonus-tag">PDF</div>
+          </div>
+          <div class="bonus-item">
+            <div class="bonus-check">✓</div>
+            <div class="bonus-text">Lista de Erros — Por que Desobedece</div>
+            <div class="bonus-tag">PDF</div>
+          </div>
+          <div class="bonus-item">
+            <div class="bonus-check">✓</div>
+            <div class="bonus-text">Modelo de Rotina para Filhotes</div>
+            <div class="bonus-tag">PDF</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPARAÇÃO DE VALOR -->
+      <div class="res-section" style="padding:0 22px;">
+        <div class="res-section-label">compare o investimento</div>
+        <div class="price-compare">
+          <div class="price-compare-row">
+            <span class="pcr-label">Adestrador presencial <strong>(1 sessão)</strong></span>
+            <span class="pcr-price">R$250</span>
+          </div>
+          <div class="price-compare-row">
+            <span class="pcr-label">Tapete higiênico <strong>(por mês)</strong></span>
+            <span class="pcr-price">R$60</span>
+          </div>
+          <div class="price-compare-row">
+            <span class="pcr-label">Cursos online <strong>(média)</strong></span>
+            <span class="pcr-price">R$197</span>
+          </div>
+          <div class="price-compare-row highlight">
+            <span class="pcr-label"><strong>DogFlow — 7 dias completo</strong></span>
+            <span class="pcr-price you">R$27</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA PRINCIPAL -->
+      <div style="padding:0 22px; margin-top:6px;">
+        <div class="result-cta-box">
+          <div class="cta-exclusive-badge">✦ oferta exclusiva do diagnóstico</div>
+          <div class="price-anchor">
+            <span class="price-original">R$97</span>
+            <span class="price-reason">— 72% off</span>
+          </div>
+          <div class="result-price">R$27<span>,00</span></div>
+          <div class="result-price-sub">pagamento único · sem mensalidade · acesso imediato</div>
+          <a href="https://pay.kiwify.com.br/a6a8NmF" data-utmify class="btn btn-white" id="result-cta-btn">
+            Quero começar agora →
+          </a>
+        </div>
+      </div>
+
+      <!-- URGÊNCIA -->
+      <div style="padding: 10px 22px 0;">
+        <p class="result-urgency">
+          <span class="urgency-dot"></span>
+          Esse valor é exclusivo para quem fez o diagnóstico
+        </p>
+      </div>
+
+      <!-- GARANTIA -->
+      <div style="padding:12px 22px 0;">
+        <div class="guarantee-badge">
+          <div class="guarantee-icon">🛡️</div>
+          <div>
+            <div class="guarantee-title">Garantia incondicional de 7 dias</div>
+            <div class="guarantee-text">Se você não ver nenhuma diferença no comportamento do seu cão, devolvemos cada centavo. Sem perguntas, sem burocracia.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEGUNDO CTA (pós garantia) -->
+      <div style="padding:14px 22px 0;">
+        <a href="https://pay.kiwify.com.br/a6a8NmF" data-utmify class="btn" id="result-cta-btn-2"
+           style="background:var(--brand);color:#fff;box-shadow:0 4px 16px rgba(255,122,17,0.35);">
+          Garantir meu acesso por R$27 →
+        </a>
+        <p style="text-align:center;font-size:0.73rem;color:var(--muted);margin-top:8px;">
+          🔒 Pagamento seguro · Kiwify · Acesso imediato
+        </p>
+      </div>
+
+      <div style="padding:20px 22px 0;">
+        <p class="disclaimer">
+          O DogFlow é um guia de adestramento com reforço positivo para problemas comuns de comportamento.
+          Não substitui avaliação veterinária ou adestrador profissional em casos de agressividade grave ou problemas de saúde.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /quiz-wrap -->
+
+<script>
+// ── State ───────────────────────────────────────────────────
+const state = {
+  dogName:   '',
+  userName:  '',
+  email:     '',
+  age:       null,
+  problem:   null,
+  impact:    null,
+  commitment:null,
+};
+
+const TOTAL_STEPS = 5;
+
+// Screen order map
+const SCREENS = ['intro', 1, 2, 3, 4, 5, 'email', 'loading', 'result'];
+
+// ── Navigation ──────────────────────────────────────────────
+function goTo(target) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const id = typeof target === 'number' ? `screen-${target}` : `screen-${target}`;
+  document.getElementById(id).classList.add('active');
+  updateProgress(target);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Update dynamic titles
+  const name = state.dogName || 'seu cão';
+  if (target === 2) document.getElementById('q2-title').textContent = `Qual a idade de ${name}?`;
+  if (target === 3) document.getElementById('q3-title').textContent = `Qual comportamento do ${name} mais te estressa?`;
+  if (target === 4) document.getElementById('q4-title').textContent = `Como o comportamento de ${name} afeta sua relação com ele?`;
+  if (target === 5) document.getElementById('q5-title').textContent = `Se você tivesse um plano claro, estaria disposto a dedicar 10 minutos por dia para treinar o ${name} durante 7 dias?`;
+}
+
+function updateProgress(target) {
+  const pct = typeof target === 'number' && target >= 1 && target <= 5
+    ? Math.round((target / TOTAL_STEPS) * 100)
+    : target === 'email' ? 95
+    : target === 'result' ? 100
+    : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+}
+
+// ── Q1: dog name ────────────────────────────────────────────
+function checkQ1() {
+  const val = document.getElementById('input-dog-name').value.trim();
+  state.dogName = val;
+  document.getElementById('btn-q1').disabled = val.length < 1;
+}
+
+// ── Options ─────────────────────────────────────────────────
+function selectOption(q, value, el) {
+  // Deselect siblings
+  el.closest('.options').querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+
+  // Store value
+  if (q === 2) state.age        = value;
+  if (q === 3) state.problem    = value;
+  if (q === 4) state.impact     = value;
+  if (q === 5) state.commitment = value;
+
+  // Enable next button
+  const btn = document.getElementById(`btn-q${q}`);
+  if (btn) btn.disabled = false;
+
+  // Auto-advance after short delay (UX)
+  setTimeout(() => {
+    if (btn && !btn.disabled) btn.click();
+  }, 380);
+}
+
+// ── Email validation ─────────────────────────────────────────
+function checkEmail() {
+  const name  = document.getElementById('input-user-name').value.trim();
+  const email = document.getElementById('input-email').value.trim();
+  const valid = name.length > 0 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  document.getElementById('btn-email').disabled = !valid;
+  if (valid) {
+    state.userName = name;
+    state.email    = email;
+  }
+}
+
+// ── Loading animation ────────────────────────────────────────
+function startLoading() {
+  goTo('loading');
+
+  // Pixel Meta — Lead event
+  if (typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: 'DogFlow Quiz'});
+
+  const steps = [
+    { id: 'lstep-1', dot: 'ldot-1', delay: 0,    duration: 900  },
+    { id: 'lstep-2', dot: 'ldot-2', delay: 900,  duration: 800  },
+    { id: 'lstep-3', dot: 'ldot-3', delay: 1700, duration: 900  },
+    { id: 'lstep-4', dot: 'ldot-4', delay: 2600, duration: 700  },
+  ];
+
+  steps.forEach(({ id, dot, delay, duration }) => {
+    setTimeout(() => {
+      document.getElementById(id).classList.add('active');
+    }, delay);
+    setTimeout(() => {
+      document.getElementById(id).classList.remove('active');
+      document.getElementById(id).classList.add('done');
+      document.getElementById(dot).textContent = '✓';
+    }, delay + duration);
+  });
+
+  // Show result after all steps
+  setTimeout(() => {
+    buildResult();
+    goTo('result');
+  }, 3700);
+}
+
+// ── Result content by problem ────────────────────────────────
+const PROBLEM_DATA = {
+  xixi: {
+    emoji:     '💧',
+    title:     'Problema de banheiro — totalmente tratável',
+    diagnosis: 'Com base nas suas respostas, {dogName} está no grupo de cães que ainda não aprendeu a associar o local certo ao comportamento de xixi. Isso não é birra nem teimosia — é falta de rotina estruturada. A boa notícia: é o comportamento que responde mais rápido ao método correto.',
+    villain:   'O vilão oculto aqui é o timing. A maioria dos tutores pune o cão minutos depois do erro — só que o cão não conecta a punição ao xixi, ele conecta à sua presença. Não é culpa sua: ninguém te ensinou que o reforço precisa acontecer nos primeiros 2 segundos após o comportamento certo.',
+    solution:  'O programa DogFlow ensina, em 7 dias, como criar a rotina de horário + local + reforço positivo no segundo exato em que ele acerta. A maioria dos donos começa a ver diferença já no Dia 3.',
+  },
+  guia: {
+    emoji:     '🦮',
+    title:     'Puxão na guia — questão de associação aprendida',
+    diagnosis: 'Com base nas suas respostas, {dogName} aprendeu que puxar a guia funciona — porque sempre que puxou, você avançou. Não é culpa sua: é o jeito que a maioria das pessoas anda com o cão, sem saber.',
+    villain:   'O vilão oculto é simples: toda vez que você avançou com a guia esticada, você ensinou {dogName} que puxar é o caminho certo. Não é teimosia — é aprendizado. Você treinou sem saber. A solução é ensinar a associação inversa com consistência.',
+    solution:  'O DogFlow tem um módulo inteiro de passeio sem puxar. Em 7 dias, com 10 minutos por dia, você aprende a técnica correta e começa a ver diferença ainda durante o treinamento.',
+  },
+  latido: {
+    emoji:     '🔊',
+    title:     'Latido excessivo — comportamento com gatilho',
+    diagnosis: 'Com base nas suas respostas, {dogName} está usando o latido como estratégia de comunicação — seja por ansiedade, excitação ou porque aprendeu que funciona para chamar atenção.',
+    villain:   'O vilão oculto é a atenção involuntária. Cada vez que você mandou {dogName} calar, olhou para ele ou tentou acalmá-lo durante o latido, você reforçou o comportamento. Não é culpa sua — é instintivo querer reagir. O DogFlow ensina a resposta certa que quebra esse ciclo.',
+    solution:  'O DogFlow ensina controle de impulso e redirecionamento positivo — as duas ferramentas que funcionam para latido. Com consistência, a maioria dos cães melhora significativamente nas primeiras semanas.',
+  },
+  pulo: {
+    emoji:     '🦘',
+    title:     'Pular nas pessoas — redirecionamento funciona',
+    diagnosis: 'Com base nas suas respostas, {dogName} pula porque foi recompensado por isso — mesmo sem querer. Cada vez que alguém o abraçou ou tentou empurrá-lo (qualquer atenção conta), o comportamento se fortaleceu.',
+    villain:   'O vilão oculto é a atenção negativa. Empurrar, xingar, até ignorar de forma dramática — tudo isso é atenção para {dogName}. Não é culpa sua: a reação natural de qualquer pessoa é reagir. O DogFlow ensina o que fazer nos primeiros 3 segundos que muda tudo.',
+    solution:  'O DogFlow ensina o redirecionamento positivo: como ignorar o pulo de forma consistente e recompensar as patas no chão. Simples na teoria, poderoso na prática.',
+  },
+  destroi: {
+    emoji:     '😤',
+    title:     'Destruição — cão entediado ou ansioso precisa de rotina',
+    diagnosis: 'Com base nas suas respostas, {dogName} provavelmente destrói objetos por excesso de energia, tédio ou ansiedade de separação. Cães sem rotina de estímulo mental e físico encontram outras formas de ocupar o cérebro.',
+    villain:   'O vilão oculto é a ausência de rotina mental. O cérebro de um cão precisa de desafio diário — sem isso, ele cria o próprio entretenimento às custas dos seus móveis. Não é maldade: é biologia. 10 minutos de treino por dia libera mais energia mental do que 1 hora de passeio.',
+    solution:  'O DogFlow ensina os comandos básicos que criam rotina e estimulação mental. Um cão que treina 10 minutos por dia tem o cérebro ocupado e o comportamento destrutivo tende a diminuir naturalmente.',
+  },
+  desobedece: {
+    emoji:     '🙈',
+    title:     'Falta de comandos básicos — ponto de partida claro',
+    diagnosis: 'Com base nas suas respostas, {dogName} ainda não tem os fundamentos de obediência. Isso é na verdade o ponto de partida mais fácil: sem hábitos errados para corrigir, só novos para construir.',
+    villain:   'O vilão oculto é a inconsistência. {dogName} não desobedece — ele nunca recebeu um padrão claro para seguir. Cada membro da família provavelmente reage diferente ao mesmo comportamento. Cães precisam de regras consistentes, não de gritos ocasionais. Não é culpa sua — ninguém te ensinou isso.',
+    solution:  'O DogFlow começa do zero e ensina os 5 comandos essenciais em 7 dias: atenção, sentar, ficar, vir e não pular. Com 10 minutos por dia, a maioria dos cães responde em poucos dias.',
+  },
+};
+
+function buildResult() {
+  const name    = state.dogName  || 'seu cão';
+  const problem = state.problem  || 'desobedece';
+  const data    = PROBLEM_DATA[problem] || PROBLEM_DATA.desobedece;
+
+  const firstName = state.userName.split(' ')[0] || 'Tutor';
+
+  document.getElementById('result-title').textContent =
+    `${firstName}, encontramos o plano certo para ${name}!`;
+  document.getElementById('result-sub').textContent =
+    `${data.emoji} ${data.title}`;
+  document.getElementById('result-diagnosis').textContent =
+    data.diagnosis.replace(/{dogName}/g, name);
+  document.getElementById('result-villain').textContent =
+    data.villain.replace(/{dogName}/g, name);
+  document.getElementById('result-solution').textContent =
+    data.solution;
+
+  // Proof name personalizado
+  document.getElementById('proof-name').textContent =
+    `${firstName}, tutores com o mesmo problema dizem:`;
+
+  // Append UTM params to both CTA buttons
+  const utmParams = new URLSearchParams({
+    utm_source:   'quiz',
+    utm_medium:   'organic',
+    utm_campaign: problem,
+    utm_content:  state.age || 'unknown',
+  });
+  ['result-cta-btn', 'result-cta-btn-2'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.href = `${btn.href.split('?')[0]}?${utmParams.toString()}`;
+  });
+}
+
+// ── Enter on text inputs ─────────────────────────────────────
+document.getElementById('input-dog-name').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('btn-q1').click();
+});
+</script>
+</body>
+</html>

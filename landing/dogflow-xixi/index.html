@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta name="facebook-domain-verification" content="z0imy7w2le8mzk5jkq61iglvn1hjv5" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DogFlow — Xixi no Lugar Certo em 7 Dias</title>
+  <meta name="description" content="Método de rotina em 7 dias que ajuda donos de cães a resolver o xixi fora do lugar — sem punição, sem grito e sem adestrador presencial. 10 minutos por dia. R$27." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="DogFlow — Xixi no Lugar Certo em 7 Dias" />
+  <meta property="og:description" content="Método de rotina em 7 dias para resolver o xixi fora do lugar. 10 minutos por dia. Sem punição. R$27." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://planopratico.shop/dogflow/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root { --brand: #ff7a11; --brand-dark: #e06000; --brand-light: #fff4eb; --surface: #FAFAF7; }
+    * { font-family: 'Inter', sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--surface); color: #1a1a1a; }
+
+    .btn-brand {
+      display: inline-block;
+      background: var(--brand);
+      color: #fff;
+      font-weight: 700;
+      padding: 1rem 2rem;
+      border-radius: 0.75rem;
+      font-size: 1.125rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+      box-shadow: 0 4px 16px rgba(255,122,17,0.35);
+      text-align: center;
+    }
+    .btn-brand:hover { background: var(--brand-dark); transform: translateY(-1px); }
+    .btn-brand:active { transform: translateY(0); }
+
+    .btn-brand-lg {
+      padding: 1.25rem 2.5rem;
+      font-size: 1.25rem;
+      border-radius: 1rem;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .pill {
+      display: inline-block;
+      background: var(--brand-light);
+      color: var(--brand);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid #ffd3a8;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: 0.5rem;
+    }
+
+    .day-card {
+      border-left: 3px solid var(--brand);
+      background: #fff;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .check-item::before {
+      content: '✓';
+      color: var(--brand);
+      font-weight: 700;
+      margin-right: 0.5rem;
+    }
+
+    .x-item::before {
+      content: '✕';
+      color: #ef4444;
+      font-weight: 700;
+      margin-right: 0.5rem;
+    }
+
+    .faq-item summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 1rem 0;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--brand);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .faq-item[open] summary::after { content: '–'; }
+    .faq-item .faq-body {
+      padding-bottom: 1rem;
+      color: #555;
+      line-height: 1.7;
+    }
+    .faq-item + .faq-item { border-top: 1px solid #ebebeb; }
+
+    .gradient-hero {
+      background: linear-gradient(160deg, #fff9f4 0%, #fff 60%);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 999px;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.78rem;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .quote-box {
+      background: var(--brand-light);
+      border-left: 4px solid var(--brand);
+      border-radius: 0 0.5rem 0.5rem 0;
+      padding: 1rem 1.25rem;
+      font-style: italic;
+      color: #444;
+    }
+
+    .bonus-card {
+      background: #fff;
+      border: 1px solid #ffe4c4;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+    }
+  </style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");
+fbq("init","1076171898074575");fbq("track","PageView");
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1076171898074575&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/a8afe151-e15b-4b4c-b570-59fdd67b5456/players/6a30530b1ead4fb7a53cdaf0/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/a8afe151-e15b-4b4c-b570-59fdd67b5456/6a3052d76748837b8cdbf630/main.m3u8" as="fetch">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
+</head>
+<body>
+
+<!-- ─── TOPBAR ─────────────────────────────────────────────── -->
+<div style="background:var(--brand);" class="text-white text-center text-xs font-semibold py-2 px-4 tracking-wide">
+  🐾 Plano Prático Dog · Acesso imediato · Garantia de 7 dias
+</div>
+
+<!-- ─── HERO ──────────────────────────────────────────────── -->
+<section class="gradient-hero px-5 pt-12 pb-16 text-center">
+  <div class="max-w-xl mx-auto">
+
+    <div class="pill mb-5">Reforço positivo · Sem punição · Sem adestrador presencial</div>
+
+    <h1 class="text-3xl sm:text-4xl font-black leading-tight text-gray-900 mb-5">
+      Seu cachorro faz xixi em<br>
+      <span style="color:var(--brand)">qualquer lugar menos onde deveria?</span>
+    </h1>
+
+    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+      Descubra o método de rotina em&nbsp;<strong>7&nbsp;dias</strong> que está ajudando donos de cães a resolver o problema do xixi fora do lugar — <strong>10&nbsp;minutos por dia</strong>, sem punição e sem precisar de adestrador presencial.
+    </p>
+
+    <!-- Ainda assiste o VSL antes de ir ao checkout -->
+    <a href="#vsl-container" class="btn-brand btn-brand-lg mx-auto block mb-6">
+      Quero começar hoje →
+    </a>
+
+    <div class="flex flex-wrap justify-center gap-2 text-sm text-gray-500">
+      <span class="badge">🔒 Acesso imediato</span>
+      <span class="badge">🏷️ R$27 pagamento único</span>
+      <span class="badge">↩️ Garantia 7 dias</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── MINI-VSL ──────────────────────────────────────────── -->
+<!-- SUBSTITUIR: colar script do Vturb aqui quando o vídeo estiver hospedado -->
+<section class="bg-white px-5 py-10">
+  <div class="max-w-xl mx-auto">
+
+    <p class="text-center text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Assista antes de comprar</p>
+
+    <div id="vsl-container" class="relative w-full rounded-2xl overflow-hidden bg-gray-900 shadow-xl">
+      <vturb-smartplayer id="vid-6a30530b1ead4fb7a53cdaf0" style="display: block; margin: 0 auto; width: 100%;"></vturb-smartplayer>
+      <script type="text/javascript">
+        var s=document.createElement("script");
+        s.src="https://scripts.converteai.net/a8afe151-e15b-4b4c-b570-59fdd67b5456/players/6a30530b1ead4fb7a53cdaf0/v4/player.js";
+        s.async=!0;
+        document.head.appendChild(s);
+      </script>
+    </div>
+
+    <p class="text-center text-sm text-gray-400 mt-4">Sem tempo para assistir? Leia a página completa abaixo.</p>
+
+  </div>
+</section>
+
+<!-- ─── DOR / IDENTIFICAÇÃO ───────────────────────────────── -->
+<section class="bg-white px-5 py-14">
+  <div class="max-w-xl mx-auto">
+
+    <div class="section-label">você conhece essa sensação</div>
+    <h2 class="text-2xl font-bold text-gray-900 mb-8 leading-snug">
+      Acordar todo dia sem saber o que vai encontrar no chão.
+    </h2>
+
+    <div class="space-y-4 mb-10">
+      <div class="quote-box">
+        "Ele tem o tapete bem ali. E faz do lado. Todo dia."
+      </div>
+      <div class="quote-box">
+        "Já tentei tapete, spray atrativo, jornal, bronca... nada funciona."
+      </div>
+      <div class="quote-box">
+        "A visita chega e eu já sei que o cheiro está lá. Fico com vergonha."
+      </div>
+      <div class="quote-box">
+        "Meu marido quer dar o cachorro embora. Eu não consigo."
+      </div>
+    </div>
+
+    <p class="text-gray-600 leading-relaxed mb-6">
+      Se você se identificou com alguma dessas situações, saiba que <strong>você não errou</strong> — e o seu cão não é teimoso, vingativo ou burro.
+    </p>
+
+    <div class="space-y-3">
+      <p class="x-item text-gray-700">Tentou tapete higiênico em vários cantos e o cão ignorou</p>
+      <p class="x-item text-gray-700">Comprou spray atrativo e não resolveu</p>
+      <p class="x-item text-gray-700">Levou o cão ao tapete mil vezes sem resultado consistente</p>
+      <p class="x-item text-gray-700">Disse "não!" com voz firme e ele continuou do mesmo jeito</p>
+      <p class="x-item text-gray-700">Pesquisou no YouTube, leu artigo atrás de artigo e ainda está no mesmo lugar</p>
+    </div>
+
+    <p class="mt-8 text-gray-800 font-semibold text-lg">
+      Você não errou. <span style="color:var(--brand)">Você só não teve acesso ao método certo ainda.</span>
+    </p>
+
+  </div>
+</section>
+
+<!-- ─── MECANISMO ─────────────────────────────────────────── -->
+<section style="background:var(--brand-light);" class="px-5 py-14">
+  <div class="max-w-xl mx-auto">
+
+    <div class="section-label">por que acontece</div>
+    <h2 class="text-2xl font-bold text-gray-900 mb-6 leading-snug">
+      Não é birra. Não é vingança.<br>
+      É <span style="color:var(--brand)">rotina confusa</span>.
+    </h2>
+
+    <p class="text-gray-600 leading-relaxed mb-5">
+      Cachorros não aprendem onde fazer xixi por punição. Eles aprendem por <strong>associação repetida e reforço positivo no momento exato.</strong>
+    </p>
+
+    <p class="text-gray-600 leading-relaxed mb-5">
+      Toda vez que você disse "não!" <em>depois</em> que ele já tinha feito — você ensinou medo, não comportamento. Toda vez que mudou o tapete de lugar ou tentou uma marca diferente de atrativo — você criou confusão, não aprendizado.
+    </p>
+
+    <div class="bg-white rounded-xl p-5 border border-orange-200 mb-6">
+      <p class="font-bold text-gray-900 mb-3">O que realmente funciona:</p>
+      <div class="space-y-2">
+        <p class="check-item text-gray-700"><strong>Local fixo</strong> — sempre o mesmo lugar</p>
+        <p class="check-item text-gray-700"><strong>Horário fixo</strong> — rotina previsível para o cão</p>
+        <p class="check-item text-gray-700"><strong>Reforço positivo imediato</strong> — no segundo exato em que acerta</p>
+      </div>
+    </div>
+
+    <p class="text-gray-600 leading-relaxed">
+      Isso é o que os adestradores chamam de <strong>rotina de banheiro</strong>. E quando aplicada corretamente, funciona nos primeiros dias — em qualquer cão, filhote ou adulto, com quintal ou em apartamento.
+    </p>
+
+  </div>
+</section>
+
+<!-- ─── COMO FUNCIONA ─────────────────────────────────────── -->
+<section class="bg-white px-5 py-14">
+  <div class="max-w-xl mx-auto">
+
+    <div class="section-label">o programa</div>
+    <h2 class="text-2xl font-bold text-gray-900 mb-2 leading-snug">
+      DogFlow — Xixi no Lugar Certo em 7 Dias
+    </h2>
+    <p class="text-gray-500 mb-8">Um plano diário, simples, com checklist — para seguir 10 minutos por dia durante 7 dias.</p>
+
+    <div class="space-y-4 mb-8">
+
+      <div class="day-card">
+        <div class="flex items-center gap-3 mb-1">
+          <span style="background:var(--brand);" class="text-white text-xs font-bold px-2 py-0.5 rounded-full">Dia 1</span>
+          <span class="font-semibold text-gray-800">Preparar o ambiente e o horário certo</span>
+        </div>
+        <p class="text-sm text-gray-500">Define o local fixo, monta a rotina de horários e prepara o espaço do jeito que facilita o acerto.</p>
+      </div>
+
+      <div class="day-card">
+        <div class="flex items-center gap-3 mb-1">
+          <span style="background:var(--brand);" class="text-white text-xs font-bold px-2 py-0.5 rounded-full">Dia 2</span>
+          <span class="font-semibold text-gray-800">O reforço positivo correto</span>
+        </div>
+        <p class="text-sm text-gray-500">Como reagir no momento exato — e o erro de timing que quase todo dono comete sem saber.</p>
+      </div>
+
+      <div class="day-card">
+        <div class="flex items-center gap-3 mb-1">
+          <span style="background:var(--brand);" class="text-white text-xs font-bold px-2 py-0.5 rounded-full">Dia 3</span>
+          <span class="font-semibold text-gray-800">O que fazer quando ele erra</span>
+        </div>
+        <p class="text-sm text-gray-500">A resposta certa para o acidente — e por que a punição sempre piora o resultado.</p>
+      </div>
+
+      <div class="day-card">
+        <div class="flex items-center gap-3 mb-1">
+          <span style="background:var(--brand);" class="text-white text-xs font-bold px-2 py-0.5 rounded-full">Dia 4</span>
+          <span class="font-semibold text-gray-800">Solidificar a rotina de horários</span>
+        </div>
+        <p class="text-sm text-gray-500">Ajuste fino na frequência e nos horários para encaixar na sua rotina real.</p>
+      </div>
+
+      <div class="day-card">
+        <div class="flex items-center gap-3 mb-1">
+          <span style="background:var(--brand);" class="text-white text-xs font-bold px-2 py-0.5 rounded-full">Dia 5</span>
+          <span class="font-semibold text-gray-800">Como lidar com regressão</span>
+        </div>
+        <p class="text-sm text-gray-500">Vai ter um dia ruim — todos os cães têm. Aqui você aprende o que fazer sem perder o progresso.</p>
+      </div>
+
+      <div class="day-card">
+        <div class="flex items-center gap-3 mb-1">
+          <span style="background:var(--brand);" class="text-white text-xs font-bold px-2 py-0.5 rounded-full">Dia 6</span>
+          <span class="font-semibold text-gray-800">Refinamento e adaptação</span>
+        </div>
+        <p class="text-sm text-gray-500">Adapta o método para a sua rotina específica — apartamento, casa, passeios, tapete ou sanitário.</p>
+      </div>
+
+      <div class="day-card">
+        <div class="flex items-center gap-3 mb-1">
+          <span style="background:var(--brand);" class="text-white text-xs font-bold px-2 py-0.5 rounded-full">Dia 7</span>
+          <span class="font-semibold text-gray-800">Revisão + como manter para sempre</span>
+        </div>
+        <p class="text-sm text-gray-500">Consolida o hábito e te dá o plano de manutenção para não precisar mais do programa.</p>
+      </div>
+
+    </div>
+
+    <p class="text-sm text-gray-500 text-center">Cada dia tem: objetivo · instrução · erro comum · checklist · tarefa prática</p>
+
+  </div>
+</section>
+
+<!-- ─── O QUE RECEBE ──────────────────────────────────────── -->
+<section style="background:var(--surface);" class="px-5 py-14">
+  <div class="max-w-xl mx-auto">
+
+    <div class="section-label">o que está incluído</div>
+    <h2 class="text-2xl font-bold text-gray-900 mb-8 leading-snug">
+      Tudo o que você precisa para aplicar o método em casa
+    </h2>
+
+    <div class="bg-white rounded-2xl border border-orange-100 p-6 mb-6 shadow-sm">
+      <p class="font-bold text-gray-900 text-lg mb-4">🐾 Programa DogFlow — 7 Dias</p>
+      <div class="space-y-2.5">
+        <p class="check-item text-gray-700">Treino guiado diário — 10 minutos por dia</p>
+        <p class="check-item text-gray-700">Checklist diário para não pular nenhum passo</p>
+        <p class="check-item text-gray-700">Erro comum de cada dia e como evitar</p>
+        <p class="check-item text-gray-700">Tarefa prática para aplicar ao longo do dia</p>
+        <p class="check-item text-gray-700">Acesso pelo celular, um dia de cada vez</p>
+      </div>
+    </div>
+
+    <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">Bônus inclusos sem custo adicional</p>
+    <div class="space-y-3 mb-8">
+
+      <div class="bonus-card">
+        <p class="font-semibold text-gray-800 mb-1">🏠 Guia: Adaptar para apartamento</p>
+        <p class="text-sm text-gray-500">Sem quintal? Sem problema. Com tapete higiênico, sanitário ou rotina de passeio programado.</p>
+      </div>
+
+      <div class="bonus-card">
+        <p class="font-semibold text-gray-800 mb-1">🐕 Guia: Cão adulto</p>
+        <p class="text-sm text-gray-500">Método adaptado para quem já criou hábito errado. Mais paciência, mesmo método.</p>
+      </div>
+
+      <div class="bonus-card">
+        <p class="font-semibold text-gray-800 mb-1">🔄 O que fazer quando regride</p>
+        <p class="text-sm text-gray-500">Guia específico para o dia ruim — porque vai ter um, e você precisa saber o que fazer.</p>
+      </div>
+
+      <div class="bonus-card">
+        <p class="font-semibold text-gray-800 mb-1">📋 Checklist para colar na geladeira</p>
+        <p class="text-sm text-gray-500">Versão resumida para não esquecer nenhum passo no dia a dia.</p>
+      </div>
+
+      <div class="bonus-card">
+        <p class="font-semibold text-gray-800 mb-1">⚠️ Lista dos 7 erros que sabotam o método</p>
+        <p class="text-sm text-gray-500">Os erros que a maioria dos donos comete sem saber — e como evitá-los desde o Dia 1.</p>
+      </div>
+
+    </div>
+
+    <div class="bg-orange-50 border border-orange-200 rounded-xl p-5">
+      <p class="text-xs font-bold text-orange-600 uppercase tracking-wide mb-1">Também disponível no checkout</p>
+      <p class="font-bold text-gray-900 mb-1">+ Pare de Destruir a Casa</p>
+      <p class="text-sm text-gray-600">Guia complementar para os 3 comportamentos mais comuns além do xixi: roer objetos, pular em visitas e latido excessivo. Mesmo método de reforço positivo.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── PARA QUEM É / NÃO É ───────────────────────────────── -->
+<section class="bg-white px-5 py-14">
+  <div class="max-w-xl mx-auto">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+      <div>
+        <p class="font-bold text-gray-900 mb-4 text-lg">Para quem é</p>
+        <div class="space-y-2.5">
+          <p class="check-item text-gray-700 text-sm">Donos de filhote que querem começar certo</p>
+          <p class="check-item text-gray-700 text-sm">Donos de cão adulto que querem mudar um hábito</p>
+          <p class="check-item text-gray-700 text-sm">Quem mora em apartamento e usa tapete ou passeio</p>
+          <p class="check-item text-gray-700 text-sm">Quem já tentou de tudo sem resultado consistente</p>
+          <p class="check-item text-gray-700 text-sm">Quem quer resolver sem punição e sem adestrador</p>
+          <p class="check-item text-gray-700 text-sm">Quem tem 10 minutos por dia e quer um método direto</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="font-bold text-gray-900 mb-4 text-lg">Para quem não é</p>
+        <div class="space-y-2.5">
+          <p class="x-item text-gray-600 text-sm">Quem quer solução mágica da noite para o dia</p>
+          <p class="x-item text-gray-600 text-sm">Cães com problema de saúde urinária (veterinário primeiro)</p>
+          <p class="x-item text-gray-600 text-sm">Casos de agressividade grave (requer profissional)</p>
+          <p class="x-item text-gray-600 text-sm">Quem não consegue dedicar 10 min/dia por 7 dias</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── GARANTIA ──────────────────────────────────────────── -->
+<section style="background:var(--brand-light);" class="px-5 py-14">
+  <div class="max-w-xl mx-auto text-center">
+
+    <div class="text-5xl mb-4">🛡️</div>
+    <div class="section-label justify-center flex">garantia</div>
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">7 dias de garantia legal</h2>
+
+    <p class="text-gray-600 leading-relaxed mb-6">
+      Você tem 7 dias corridos para testar o DogFlow. Se por qualquer motivo não gostar, basta pedir o reembolso por e-mail dentro desse prazo. Você recebe o valor de volta integralmente, sem perguntas.
+    </p>
+
+    <p class="text-gray-500 text-sm leading-relaxed mb-6">
+      É seu direito como consumidor (CDC Art. 49) — e a gente respeita isso.
+    </p>
+
+    <div class="bg-white border border-orange-200 rounded-xl p-4 text-sm text-gray-500 text-left leading-relaxed">
+      <strong class="text-gray-700">Aviso importante:</strong> Este programa é de manejo comportamental com reforço positivo. Não substitui avaliação veterinária ou adestrador profissional. Se seu cão apresentar mudança brusca no padrão de xixi, dor, sangue na urina, retenção urinária ou qualquer sintoma físico, consulte um veterinário antes de iniciar qualquer programa comportamental.
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── FAQ ───────────────────────────────────────────────── -->
+<section class="bg-white px-5 py-14">
+  <div class="max-w-xl mx-auto">
+
+    <div class="section-label">perguntas frequentes</div>
+    <h2 class="text-2xl font-bold text-gray-900 mb-8">Dúvidas comuns</h2>
+
+    <div>
+
+      <details class="faq-item">
+        <summary>O programa funciona para filhote?</summary>
+        <div class="faq-body">
+          Sim. Filhote é o melhor momento para começar — os primeiros dias definem o hábito para a vida toda. O DogFlow foi criado pensando nesse perfil.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Funciona para cão adulto que já tem o hábito errado criado?</summary>
+        <div class="faq-body">
+          Sim. Cão adulto leva um pouco mais de tempo para desaprender o hábito antigo, mas o método é o mesmo. O programa tem uma seção específica para cão adulto com ajustes de expectativa e tempo.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Funciona para quem mora em apartamento sem quintal?</summary>
+        <div class="faq-body">
+          Sim. O método foi construído pensando em apartamento. Cobre tapete higiênico, sanitário higiênico plástico e rotina de passeio programado — você escolhe o que faz mais sentido para a sua realidade.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>E se o problema do xixi for uma infecção urinária?</summary>
+        <div class="faq-body">
+          Se o seu cão apresenta mudança súbita no padrão de xixi, urina com sangue, dificuldade para urinar, xixi com dor ou cheiro muito forte, consulte um veterinário antes de iniciar qualquer programa comportamental. Esses podem ser sinais de problema de saúde — e nenhum método comportamental resolve causa médica.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Meu cão tem problema de agressividade. O programa ajuda?</summary>
+        <div class="faq-body">
+          Não. O DogFlow é específico para o comportamento de banheiro. Casos de agressividade precisam de avaliação de médico veterinário comportamental ou etólogo. Não tentamos cobrir esse tema.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Precisa de punição, grito ou bater?</summary>
+        <div class="faq-body">
+          Não. Nunca. O método do DogFlow é 100% baseado em reforço positivo, rotina e consistência. Punição não ensina onde fazer — só cria medo e piora o problema.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Em quanto tempo verei resultado?</summary>
+        <div class="faq-body">
+          A maioria dos donos começa a ver diferença entre o Dia 3 e o Dia 5. O objetivo do programa é criar o início da rotina em 7 dias — a consolidação total do hábito pode levar até 3 semanas de manutenção após o programa. Resultado não é garantido para todos os cães, pois depende de consistência na aplicação.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>E se eu não gostar ou não ver resultado?</summary>
+        <div class="faq-body">
+          Você tem 7 dias de garantia legal. Se não ficou satisfeito com o programa por qualquer motivo, solicite o reembolso por e-mail dentro desse prazo e devolvemos o valor integralmente. Sem perguntas.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>O acesso fica disponível para sempre?</summary>
+        <div class="faq-body">
+          Sim. Após os 7 dias do programa, você mantém acesso ao conteúdo para revisitar sempre que precisar — inclusive se precisar aplicar o método com um novo cão no futuro.
+        </div>
+      </details>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── CTA FINAL ─────────────────────────────────────────── -->
+<section id="checkout" style="background:var(--brand);" class="px-5 py-16 text-center">
+  <div class="max-w-xl mx-auto">
+
+    <div class="text-white/80 text-sm font-semibold uppercase tracking-widest mb-4">Plano Prático Dog apresenta</div>
+    <h2 class="text-3xl font-black text-white mb-2 leading-tight">
+      DogFlow
+    </h2>
+    <p class="text-white/90 text-lg mb-6">Xixi no Lugar Certo em 7 Dias</p>
+
+    <div class="bg-white/15 rounded-2xl p-6 mb-8 inline-block w-full max-w-sm">
+      <div class="text-white/70 text-sm mb-1">pagamento único</div>
+      <div class="text-5xl font-black text-white mb-1">R$27</div>
+      <div class="text-white/80 text-sm">acesso imediato após confirmação</div>
+    </div>
+
+    <div class="flex flex-col items-center gap-4">
+      <a href="https://pay.kiwify.com.br/a6a8NmF" data-utmify class="btn-brand btn-brand-lg" style="background:#fff; color:var(--brand); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+        Garantir meu acesso por R$27 →
+      </a>
+      <p class="text-white/70 text-sm">Checkout seguro · Acesso imediato · Garantia de 7 dias</p>
+    </div>
+
+    <div class="mt-10 pt-8 border-t border-white/20 text-white/60 text-xs leading-relaxed">
+      Plano Prático Dog · Produto digital de manejo comportamental.<br>
+      Não substitui avaliação veterinária ou adestrador profissional.<br>
+      Dúvidas: contato via e-mail após a compra.
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

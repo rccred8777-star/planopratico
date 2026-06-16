@@ -1,0 +1,21 @@
+services:
+  code-server:
+    build: .
+    image: code-server-custom:latest
+    container_name: code-server
+    restart: unless-stopped
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=America/Sao_Paulo
+      - PASSWORD=PlanoPratico2026
+    ports:
+      - "8080:8443"
+    volumes:
+      - code-server-data:/config
+      - /opt/planopratico:/config/workspace/planopratico
+      - /opt/planopratico:/opt/planopratico
+
+volumes:
+  code-server-data:
+    external: true
