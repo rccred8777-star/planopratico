@@ -295,3 +295,15 @@
 - **[16/06/2026] Claude VPS** — CTA: box escuro + badge "72% off" + preço R$27 grande + botão pulsante ✅
 - **[16/06/2026] Claude VPS** — Garantia: badge visual com escudo + título + descrição ✅
 - **[16/06/2026] Claude VPS** — Segundo CTA pós-garantia adicionado ✅
+
+---
+
+## Sprint 26 — Sistema Espião de Concorrentes (16/06/2026)
+
+- **[16/06/2026] Claude VPS** — SQL schema criado: 6 tabelas (competitor_ads, competitor_transcripts, competitor_angles, our_ad_performance, our_angles, our_scripts) com RLS service_role ✅
+- **[16/06/2026] Claude VPS** — W1 BUSCA_CONCORRENTES: webhook → Meta Ads Library API → Supabase upsert (descoberta de anúncios ativos por keyword) ✅
+- **[16/06/2026] Claude VPS** — W2 TRANSCRICAO_VIDEO: webhook → Scrapfly (render_js+asp) → extrai CDN URL → download → Whisper PT → salva transcrição ✅
+- **[16/06/2026] Claude VPS** — W3 ANALISE_ANGULOS: schedule 8h diário → Gemini 2.5 Pro → extrai hook/vilão/mecanismo/CTA/tom → salva em competitor_angles ✅
+- **[16/06/2026] Claude VPS** — W4 GERACAO_SCRIPT: webhook → Perplexity ICP research → Gemini 5 ângulos → Gemini script Mini VSL completo → salva our_angles + our_scripts ✅
+- **[16/06/2026] Claude VPS** — RUNBOOK_SETUP_ESPIAO.md criado: guia passo-a-passo para ativar o sistema (Supabase SQL, API keys, n8n config, testes) ✅
+- **[16/06/2026] Pendente** — Humano: rodar SQL no Supabase + adicionar API keys no n8n + importar workflows
