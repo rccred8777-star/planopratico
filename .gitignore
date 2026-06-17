@@ -20,3 +20,4 @@ dist/
 # Arquivos compactados e logs
 *.tar.gz
 *.log
+stacks/n8n/.env
