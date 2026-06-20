@@ -1,17 +1,37 @@
-# ✅ AGENTE CHEFE: a campanha NOVA de xixi JÁ FOI SUBIDA E ATIVADA pelo Claude (20/06). NÃO crie outra. Campanha "[DogFlow] Xixi 1x1x1 — Teste 3D (Maxima)" id 120248854033500623, 9 conjuntos 1x1x1, R$10/dia cada (R$90/dia), pixel 1390710396449878, 9 vídeos com app na tela. Anúncios em revisão. Pixel da landing foi corrigido p/ 1390 (o 1076 era órfão). A campanha antiga [DogFlow] Teste 1-3-2 (120248611748940623) segue ATIVA por decisão do dono. PENDENTE DO DONO: colocar pixel 1390710396449878 dentro do Kiwify p/ registrar Purchase + conectar Meta no Windsor.
-
-## 🚀 HANDOFF ATIVO — Lançar campanha DogFlow Xixi (19/06/2026)
-> Pacote completo: docs/product/PACOTE_LANCAMENTO_DOGFLOW_XIXI_V1.md
-- Produto, landing, tracking, app e 5 vídeos editados PRONTOS.
-- Subir no Gerenciador: ABO 1×1×1, 10 conjuntos, R$15/dia cada, objetivo Vendas, pixel 1076, 5 dias.
-- DECISÃO B: subir JÁ 5 conjuntos (V01-V04,V10 editados), R$10/dia cada = R$50/dia, 5 dias. Add +5 quando V05-V09 prontos.
-- Criativos editados: planopratico.shop/review/ · Aprovação: tabela creative_reviews.
-
 # Log de Operações — Plano Prático
 
 > Registro cronológico de todas as ações executadas no projeto.
 
 ---
+
+## 📍 ESTADO ATUAL — 20/06/2026 (sessão Claude)
+
+### DogFlow — VENDENDO 🎉
+- **Campanha Xixi Máxima LANÇADA e ATIVA** (`120248854033500623`): 9 conjuntos 1×1×1, R$90/dia, 9 vídeos (avatar HeyGen + app na tela via ffmpeg), pixel `1390710396449878`. Já com **3 compras atribuídas** no Meta.
+- Campanha antiga "[DogFlow] Teste 1-3-2" (`120248611748940623`) segue ativa (decisão do dono); 0 venda, só engajamento.
+- **1ª VENDA REAL:** Rogéria Rocha, R$27, 20/06 — rastreio ponta a ponta OK (Kiwify→Supabase; pixel Purchase disparando).
+- **Pixel corrigido:** era `1076` (órfão, não existia na conta) → agora `1390710396449878` na landing+obrigado+quiz **e** no Kiwify (domínio go.kiwify.com.br, toggles pix/boleto OFF).
+- **Meta conectado no Windsor** (conta planopratico) — gestor já lê ROAS/compras.
+- **Token Meta de 60 dias** (até ~19/08) em `SKILL_GESTOR_TRAFEGO_V1.md §9` (na VPS é real; no Git é placeholder). Windsor faz pausar/verba sem token.
+
+### WhatsApp — avisos + consulta de vendas
+- W1 (`T4PpjDMdSiojjBr2`): nó "Aviso Venda (Owner)" → toda compra aprovada manda WhatsApp pro dono (`555185778777`).
+- Atendente (`iXdrSHberPdpIBYa`): dono pergunta "vendas?" → puxa da **API do Kiwify** e responde (hoje/total/líquido). Creds Kiwify no env do n8n. Ref: memória `reference_whatsapp_sales_bot`.
+- Novo workflow "Enviar Email Manual" (`EnviarEmailMan01`) — dispara email via SMTP (credencial Hostinger).
+
+### Eliane — low ticket B2C iniciado
+- Direção confirmada: **B2C "Mapa do Padrão" R$67** (ângulo apego/repetição; cortado o "feminino", que é fraco na pesquisa).
+- Entrega escrita e fundamentada (genograma Bowen/McGoldrick + constelação): `docs/product/PRODUTO_MAPA_DO_PADRAO_ELIANE_V1.md` — ⚠️ falta **aval da Eliane**.
+- Relatório + produto **enviados por email** pro dono.
+- Pendente: página de venda + 10 criativos. **Espião de terapia (EW2/EW3) NÃO configurado** → pesquisa da Eliane é só YouTube VoC, sem ângulos de concorrente.
+
+### Infra / housekeeping
+- **Disco da VPS:** limpei cache de build do Docker → **85%→38%** (liberou 45GB). Backups crescem ~5GB/dia (podar depois). Espião confirmado REAL e fresco (coleta 20/06).
+- **GitHub** `rccred8777-star/planopratico`: repo **blindado** (segredos fora do versionamento via .gitignore + scrub), commit feito. **Push PENDENTE** — a trava de segurança impede o agente de enviar pra externo; precisa o dono autorizar (rodar `git push` ele mesmo ou liberar permissão).
+- **Bugs do Espião** a corrigir: filtro pega anúncios fora do nicho (DramaWave, Contos Rápidos…) + `quality_score` nulo.
+
+---
+
 
 ## Sprint 0 — Auditoria (14/06/2026)
 
