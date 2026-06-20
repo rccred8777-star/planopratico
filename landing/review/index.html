@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Revisão de Criativos — DogFlow</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,"Segoe UI",Arial,sans-serif}
+  body{background:#0f0f14;color:#e8e8ef;padding:16px;max-width:560px;margin:0 auto}
+  h1{font-size:20px;margin-bottom:4px}
+  .sub{color:#9a9ab0;font-size:13px;margin-bottom:18px}
+  .card{background:#1a1a24;border:1px solid #2a2a3a;border-radius:14px;padding:14px;margin-bottom:16px}
+  .ctitle{font-weight:700;font-size:15px;margin-bottom:8px}
+  video{width:100%;border-radius:10px;background:#000;margin-bottom:10px}
+  .pend{color:#777;font-size:13px;padding:24px;text-align:center;border:1px dashed #333;border-radius:10px;margin-bottom:10px}
+  .btns{display:flex;gap:8px;margin-bottom:8px}
+  .btns button{flex:1;padding:10px;border:none;border-radius:9px;font-weight:700;font-size:13px;cursor:pointer;opacity:.45;transition:opacity .15s}
+  .ok{background:#1f9d55;color:#fff}.rep{background:#e0245e;color:#fff}.mud{background:#e8a33d;color:#000}
+  .btns button.active{opacity:1;outline:2px solid #fff}
+  textarea{width:100%;background:#0f0f14;border:1px solid #2a2a3a;color:#e8e8ef;border-radius:8px;padding:9px;font-size:13px;resize:vertical;min-height:42px}
+  .saved{font-size:11px;color:#1f9d55;height:14px;margin-top:4px}
+</style>
+</head>
+<body>
+<h1>🎬 Revisão de Criativos — DogFlow Xixi</h1>
+<div class="sub">Assiste cada um e marca. Salva sozinho — pode fechar e voltar.</div>
+<div id="list"></div>
+
+<script>
+const SUPA='https://oardxsdiwaxmpomxhfls.supabase.co';
+const ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9hcmR4c2Rpd2F4bXBvbXhoZmxzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NTA3NTIsImV4cCI6MjA5NzAyNjc1Mn0.NHGfn4lrllDGzXqFCC2pWsXFcfKaF9T4hdW9lPiUmi0';
+const H={apikey:ANON,Authorization:'Bearer '+ANON,'Content-Type':'application/json'};
+
+const creatives=[
+ {key:'V01', title:'V01 — A alça pronta (avatar + app na tela)', url:'/review/TESTE_V01.mp4'},
+ {key:'V02', title:'V02 — Economia ("mais barato que o sofá")', url:'/review/TESTE_V02.mp4'},
+ {key:'V03', title:'V03 — Já gastou e não resolveu', url:'/review/TESTE_V03.mp4'},
+ {key:'V04', title:'V04 — A solução é mais simples', url:'/review/TESTE_V04.mp4'},
+ {key:'V06', title:'V06 — O job do tutor', url:'/review/TESTE_V06.mp4'},
+ {key:'V07', title:'V07 — Prova social', url:'/review/TESTE_V07.mp4'},
+ {key:'V08', title:'V08 — Não desista do cão', url:'/review/TESTE_V08.mp4'},
+ {key:'V09', title:'V09 — O efeito de preencher', url:'/review/TESTE_V09.mp4'},
+ {key:'V10', title:'V10 — O que acontece se não resolver', url:'/review/TESTE_V10.mp4'},
+ {key:'V05', title:'V05 — Filhote/desespero (regerar no HeyGen)', url:null},
+];
+
+async function save(key,status,notes){
+  await fetch(SUPA+'/rest/v1/creative_reviews?on_conflict=creative_key',{method:'POST',headers:Object.assign({},H,{Prefer:'resolution=merge-duplicates,return=minimal'}),body:JSON.stringify({creative_key:key,status:status,notes:notes,updated_at:new Date().toISOString()})});
+}
+function flash(el){el.textContent='✓ salvo';setTimeout(()=>el.textContent='',1500)}
+
+async function build(){
+  let existing={};
+  try{const r=await fetch(SUPA+'/rest/v1/creative_reviews?select=*',{headers:H});(await r.json()).forEach(x=>existing[x.creative_key]=x);}catch(e){}
+  const list=document.getElementById('list');
+  creatives.forEach(c=>{
+    const ex=existing[c.key]||{};
+    const card=document.createElement('div');card.className='card';
+    card.innerHTML=`<div class="ctitle">${c.title}</div>`+
+      (c.url?`<video controls preload="metadata" src="${c.url}"></video>`:`<div class="pend">⏳ Ainda não gerado no HeyGen</div>`)+
+      `<div class="btns">
+        <button class="ok"  data-s="ok">✅ OK</button>
+        <button class="rep" data-s="reprovado">❌ Reprovar</button>
+        <button class="mud" data-s="mudar">✏️ Mudar</button>
+      </div>
+      <textarea placeholder="Observação (o que mudar...)">${ex.notes||''}</textarea>
+      <div class="saved"></div>`;
+    const btns=card.querySelectorAll('.btns button');
+    const ta=card.querySelector('textarea');
+    const saved=card.querySelector('.saved');
+    function setActive(s){btns.forEach(b=>b.classList.toggle('active',b.dataset.s===s))}
+    if(ex.status)setActive(ex.status);
+    btns.forEach(b=>b.onclick=()=>{setActive(b.dataset.s);save(c.key,b.dataset.s,ta.value);flash(saved)});
+    ta.onblur=()=>{const cur=[...btns].find(b=>b.classList.contains('active'));save(c.key,cur?cur.dataset.s:null,ta.value);flash(saved)};
+    list.appendChild(card);
+  });
+}
+build();
+</script>
+</body>
+</html>

@@ -51,3 +51,18 @@ Caminho base permitido:
 | Wiki desatualizada | Sessão tipo Wiki para atualizar |
 | Conteúdo com violação de compliance | Revisar contra SPEC_COMPLIANCE |
 | Hermes perdeu contexto | Recarregar este runbook + estado-atual + decisoes |
+
+## 5. Toolkit de Marketing do Hermes (liberado 19/06/2026)
+
+Ao iniciar uma sessão Hermes de **criativo / análise / estratégia**, carregar e usar `docs/HERMES_MARKETING_TOOLKIT_V1.md`.
+
+Equipa o agente chefe com:
+- **Skills** (em /config/.claude/skills, carregam na sessão): `marketing-psychology` + `alex-hormozi-pitch`
+- **Método dos vídeos** (wiki): low ticket raiz (Ricardo Máxima), esteira Quiz+VSL (Davi/Vturb), agente de campanhas Meta
+- **Playbook**: `SKILL_GESTOR_TRAFEGO_V1` (Espião → oferta → criativo → teste A/B, rastreável)
+
+Mantém DEC-004: Hermes recomenda, humano executa. Só adota nova skill de fonte escaneada (skillsdirectory grade-A), lendo o código antes.
+
+## 6. Handoff ativo — Lançamento DogFlow Xixi (19/06/2026)
+Pacote pronto pra subir a campanha: **docs/product/PACOTE_LANCAMENTO_DOGFLOW_XIXI_V1.md**.
+Tem: status, os 5 vídeos editados (planopratico.shop/review), oferta, estrutura ABO 1×1×1, passo a passo no Gerenciador, KPIs e o que falta (V05-V09 + conectar Meta no Windsor). Carregar ao iniciar sessão de lançamento/tráfego.

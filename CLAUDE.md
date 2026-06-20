@@ -1,3 +1,5 @@
+> 📨 AGENTE CHEFE: há mensagem pendente pra você em docs/MENSAGEM_PARA_O_AGENTE_CHEFE.md (campanha DogFlow Xixi).
+
 # PlanoPratico — Contexto para Claude
 
 ## O que é este projeto

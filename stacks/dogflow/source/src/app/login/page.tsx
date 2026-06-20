@@ -12,14 +12,25 @@ export default function LoginPage() {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [msg, setMsg] = useState('')
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
-    setError('')
+    setError(''); setMsg('')
     const { error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) { setError('E-mail ou senha incorretos.'); setLoading(false); return }
     router.push('/treinos')
+  }
+
+  async function handleReset() {
+    setError(''); setMsg('')
+    if (!email) { setError('Digite seu e-mail no campo acima primeiro.'); return }
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/criar-senha`,
+    })
+    if (error) { setError('Não foi possível enviar agora. Tente de novo.'); return }
+    setMsg('Enviamos um link de recuperação para o seu e-mail. Verifique a caixa de entrada e o spam.')
   }
 
   return (
@@ -65,6 +76,9 @@ export default function LoginPage() {
             {error && (
               <p className="text-red-500 text-sm bg-red-50 px-4 py-2 rounded-xl">{error}</p>
             )}
+            {msg && (
+              <p className="text-green-600 text-sm bg-green-50 px-4 py-2 rounded-xl">{msg}</p>
+            )}
 
             <button
               type="submit"
@@ -72,6 +86,14 @@ export default function LoginPage() {
               className="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-2xl transition-colors flex items-center justify-center gap-2 disabled:opacity-60"
             >
               {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Entrar'}
+            </button>
+
+            <button
+              type="button"
+              onClick={handleReset}
+              className="w-full text-center text-sm text-brand-600 hover:underline mt-1"
+            >
+              Esqueci minha senha
             </button>
           </form>
         </div>

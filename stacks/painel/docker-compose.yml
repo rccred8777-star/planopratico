@@ -1,0 +1,31 @@
+services:
+  painel:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL}
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL}
+    container_name: painel
+    restart: unless-stopped
+    ports:
+      - "3002:3001"
+    environment:
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL}
+      - HEYGEN_API_KEY=${HEYGEN_API_KEY}
+      - META_ACCESS_TOKEN=${META_ACCESS_TOKEN}
+      - META_AD_ACCOUNT=${META_AD_ACCOUNT}
+      - KIWIFY_WEBHOOK_TOKEN=${KIWIFY_WEBHOOK_TOKEN}
+    volumes:
+      - /opt/planopratico/docs:/app/docs:ro
+    networks:
+      - planopratico_net
+
+networks:
+  planopratico_net:
+    external: true

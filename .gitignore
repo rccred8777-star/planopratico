@@ -1,23 +1,47 @@
-# Segredos e credenciais
-stacks/wacrm/.env
-stacks/dogflow/.env
+# ===== SECRETS / ENV (nunca versionar) =====
+.env
+.env.*
+**/.env
+**/.env.*
 .claude/
 
-# Dados de runtime Docker
-volumes/
-backups/
-logs/
+# ===== Rascunhos / temporários (com tokens) =====
+_*.json
+_*.py
+*.bak
+/tmp/
 
-# Código-fonte WaCRM (repositório separado upstream)
+# ===== Scripts de automação com chaves hardcoded (ficam só na VPS) =====
+/scripts/
+
+# ===== Workflows n8n exportados (embutem tokens/credenciais) =====
+stacks/n8n/workflows/*.json
+
+# ===== Código-fonte WaCRM (repositório separado upstream) =====
 stacks/wacrm/source/
 
-# Dependências e builds Node.js
+# ===== Dependências / build =====
 node_modules/
+**/node_modules/
 .next/
+**/.next/
 dist/
 .turbo/
+**/build/
 
-# Arquivos compactados e logs
-*.tar.gz
+# ===== Dados de runtime / volumes / logs / backups =====
+volumes/
+**/volumes/
+backups/
+logs/
+**/logs/
 *.log
-stacks/n8n/.env
+*.tar.gz
+
+# ===== Mídia pesada (criativos / vídeos) =====
+*.mp4
+*.mov
+
+# ===== OS =====
+.DS_Store
+Thumbs.db

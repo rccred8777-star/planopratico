@@ -15,7 +15,7 @@ services:
       - GENERIC_TIMEZONE=America/Sao_Paulo
       - TZ=America/Sao_Paulo
       - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
-      - WA_PHONE_NUMBER_ID=1114925368379067
+      - WA_PHONE_NUMBER_ID=1289596924230439
     volumes:
       - /opt/planopratico/volumes/n8n_data:/home/node/.n8n
     networks:
