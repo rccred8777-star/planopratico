@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Painel — Estância Equilíbrio</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,"Segoe UI",Arial,sans-serif}
+  body{background:#f4efe9;color:#3a2e26;padding:16px;max-width:680px;margin:0 auto}
+  h1{font-size:21px;color:#7a5a44}.sub{color:#9a8472;font-size:13px;margin-bottom:18px}
+  .card{background:#fff;border:1px solid #ece0d4;border-radius:14px;padding:16px;margin-bottom:16px;box-shadow:0 6px 20px rgba(120,90,68,.06)}
+  label{display:block;font-size:12px;color:#9a8472;margin:8px 0 3px;font-weight:600}
+  input,select,textarea{width:100%;padding:10px;border:1px solid #e3d8cd;border-radius:9px;font-size:14px;background:#fbf8f4}
+  textarea{min-height:56px;resize:vertical}
+  button{background:#7a5a44;color:#fff;border:none;border-radius:9px;padding:11px 16px;font-weight:700;font-size:14px;cursor:pointer;width:100%;margin-top:12px}
+  button.sec{background:#c9a24b}button.ghost{background:#e8ddd2;color:#7a5a44}
+  button.del,button.edit{width:auto;padding:6px 11px;font-size:12px;margin:0 0 0 6px}
+  button.del{background:#c0512f}button.edit{background:#c9a24b}
+  .tabs{display:flex;gap:8px;margin-bottom:14px}.tabs button{flex:1;background:#e8ddd2;color:#7a5a44;margin:0}.tabs button.on{background:#7a5a44;color:#fff}
+  .item{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid #f0e8df}
+  .item img,.item video{width:54px;height:54px;object-fit:cover;border-radius:8px;background:#eee}
+  .item .info{flex:1;font-size:13px}.item .info b{display:block}
+  .hide{display:none}.msg{font-size:13px;padding:8px;border-radius:8px;margin-top:8px}
+  .ok{background:#e3f3e7;color:#1f7d44}.err{background:#fbe3df;color:#b03a22}.up{font-size:12px;color:#9a8472}
+  .cur{font-size:12px;color:#7a5a44;margin-top:4px}
+</style></head>
+<body>
+<h1>🌿 Painel da Eliane</h1>
+<div class="sub">Adicione ou edite depoimentos, fotos e produtos. O site atualiza sozinho.</div>
+
+<div id="login" class="card">
+  <label>Email</label><input id="email" type="email" value="eliane@estanciaequilibrio.com.br">
+  <label>Senha</label><input id="pass" type="password">
+  <button onclick="entrar()">Entrar</button><div id="loginmsg"></div>
+</div>
+
+<div id="app" class="hide">
+  <div class="tabs">
+    <button data-t="depoimento" class="on" onclick="tab('depoimento')">Depoimentos</button>
+    <button data-t="produto" onclick="tab('produto')">Loja / Livros</button>
+    <button data-t="foto" onclick="tab('foto')">Fotos</button>
+  </div>
+  <div class="card">
+    <b id="formtitle">Novo depoimento</b>
+    <label>Foto ou vídeo</label><input id="arquivo" type="file" accept="image/*,video/*"><div class="cur" id="curfile"></div><div class="up" id="upmsg"></div>
+    <div id="f-nome"><label>Nome</label><input id="nome"></div>
+    <div id="f-cat" class="hide"><label>Categoria</label><select id="cat"><option>Livro</option><option>Semijoia</option><option>Kit</option></select></div>
+    <div id="f-preco" class="hide"><label>Preço</label><input id="preco" placeholder="Ex: R$120"></div>
+    <div id="f-texto"><label>Texto / descrição</label><textarea id="texto"></textarea></div>
+    <button id="savebtn" onclick="salvar()">Adicionar</button>
+    <button class="ghost hide" id="cancelbtn" onclick="cancelar()">Cancelar edição</button>
+    <div id="msg"></div>
+  </div>
+  <div class="card"><b>Atuais</b><div id="lista"></div></div>
+  <button class="sec" onclick="sair()">Sair</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPA='https://oardxsdiwaxmpomxhfls.supabase.co';
+const ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9hcmR4c2Rpd2F4bXBvbXhoZmxzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NTA3NTIsImV4cCI6MjA5NzAyNjc1Mn0.NHGfn4lrllDGzXqFCC2pWsXFcfKaF9T4hdW9lPiUmi0';
+const sb=supabase.createClient(SUPA,ANON);
+let CUR='depoimento', ITEMS=[], EDIT=null;
+
+async function entrar(){const{error}=await sb.auth.signInWithPassword({email:email.value,password:pass.value});
+  if(error){loginmsg.innerHTML='<div class="msg err">'+error.message+'</div>';return;}
+  login.classList.add('hide');app.classList.remove('hide');carregar();}
+async function sair(){await sb.auth.signOut();location.reload();}
+
+function tab(t){CUR=t;cancelar();document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+  ['f-preco','f-cat'].forEach(id=>document.getElementById(id).classList.toggle('hide',t!=='produto'));
+  formtitle.textContent={depoimento:'Novo depoimento',produto:'Novo produto',foto:'Nova foto'}[t];carregar();}
+
+function editar(id){EDIT=ITEMS.find(x=>x.id===id);if(!EDIT)return;const d=EDIT.data||{};
+  nome.value=d.nome||'';texto.value=d.texto||'';if(preco)preco.value=d.preco||'';if(cat&&d.categoria)cat.value=d.categoria;
+  curfile.textContent=d.arquivo?'📎 arquivo atual (deixe vazio pra manter, ou suba um novo)':'';
+  savebtn.textContent='Salvar alterações';cancelbtn.classList.remove('hide');formtitle.textContent='Editando: '+(d.nome||'item');
+  window.scrollTo(0,0);}
+function cancelar(){EDIT=null;nome.value='';texto.value='';if(preco)preco.value='';arquivo.value='';curfile.textContent='';
+  savebtn.textContent='Adicionar';cancelbtn.classList.add('hide');msg.innerHTML='';}
+
+async function salvar(){msg.innerHTML='';const file=arquivo.files[0];let url='';
+  if(file){upmsg.textContent='enviando...';const path=CUR+'/'+Date.now()+'_'+file.name.replace(/[^a-zA-Z0-9.]/g,'');
+    const{error:ue}=await sb.storage.from('site-assets').upload(path,file);
+    if(ue){msg.innerHTML='<div class="msg err">upload: '+ue.message+'</div>';upmsg.textContent='';return;}
+    url=sb.storage.from('site-assets').getPublicUrl(path).data.publicUrl;upmsg.textContent='';}
+  let data=EDIT?Object.assign({},EDIT.data):{};
+  data.nome=nome.value;data.texto=texto.value;
+  if(url){data.arquivo=url;data.is_video=file&&file.type.startsWith('video');}
+  if(CUR==='produto'){data.preco=preco.value;data.categoria=cat.value;
+    data.whatsapp='https://wa.me/5551985641277?text='+encodeURIComponent('Olá! Quero: '+nome.value+' ('+preco.value+')');}
+  let error;
+  if(EDIT){({error}=await sb.from('site_content').update({data}).eq('id',EDIT.id));}
+  else{({error}=await sb.from('site_content').insert({client_slug:'eliane',type:CUR,data}));}
+  if(error){msg.innerHTML='<div class="msg err">'+error.message+'</div>';return;}
+  msg.innerHTML='<div class="msg ok">✓ salvo!</div>';cancelar();carregar();}
+
+async function carregar(){const{data}=await sb.from('site_content').select('*').eq('client_slug','eliane').eq('type',CUR).order('created_at');
+  ITEMS=data||[];
+  lista.innerHTML=ITEMS.map(it=>{const d=it.data||{};
+    const m=d.arquivo?(d.is_video?'<video src="'+d.arquivo+'#t=0.5"></video>':'<img src="'+d.arquivo+'">'):'<div style="width:54px;height:54px;background:#eee;border-radius:8px"></div>';
+    return '<div class="item">'+m+'<div class="info"><b>'+(d.nome||'(sem nome)')+'</b>'+(d.preco?d.preco+' · '+(d.categoria||''):'')+'</div><button class="edit" onclick="editar(\''+it.id+'\')">editar</button><button class="del" onclick="del(\''+it.id+'\')">excluir</button></div>';
+  }).join('')||'<div class="up" style="padding:10px 0">nada ainda</div>';}
+async function del(id){if(!confirm('Excluir?'))return;await sb.from('site_content').delete().eq('id',id);carregar();}
+
+sb.auth.getSession().then(({data})=>{if(data.session){login.classList.add('hide');app.classList.remove('hide');carregar();}});
+</script></body></html>

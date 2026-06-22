@@ -893,9 +893,9 @@ src="https://www.facebook.com/tr?id=1390710396449878&ev=PageView&noscript=1"/></
       </div>
     </div>
 
-    <span class="intro-pill">🐾 método de reforço positivo</span>
-    <h1 class="intro-title">Descubra o plano de treino personalizado para o seu cão</h1>
-    <p class="intro-sub">Responda 5 perguntas rápidas e veja exatamente o que fazer para corrigir o comportamento do seu cão em 7 dias.</p>
+    <span class="intro-pill">🐾 Método 10 Minutos · sem punição</span>
+    <h1 class="intro-title">Descubra a rotina de 10 minutos que coloca o xixi do seu cão no lugar certo — em 7 dias</h1>
+    <p class="intro-sub">A verdade: você não precisa borrifar repelente todo dia pra sempre. Não é o seu cão que é teimoso — é a falta de uma rotina. Responda 5 perguntas e receba o seu <strong>Método 10 Minutos</strong> personalizado.</p>
 
     <ul class="intro-checklist">
       <li><span class="chk">✓</span> 100% gratuito — sem cadastro</li>
@@ -962,37 +962,32 @@ src="https://www.facebook.com/tr?id=1390710396449878&ev=PageView&noscript=1"/></
   <!-- ─── SCREEN 3: PROBLEMA ──────────────────────────────────── -->
   <div class="screen" id="screen-3">
     <div class="step-label">Pergunta 3 de 5</div>
-    <h2 class="q-title" id="q3-title">Qual comportamento mais te estressa?</h2>
-    <p class="q-sub">Escolha o que mais impacta sua rotina hoje.</p>
+    <h2 class="q-title" id="q3-title">Onde o seu cão faz xixi que não devia?</h2>
+    <p class="q-sub">Marque a situação que mais acontece na sua casa.</p>
     <div class="options" id="opts-3">
-      <div class="option" onclick="selectOption(3, 'xixi', this)">
-        <span class="option-emoji">💧</span>
-        <span class="option-text">Faz xixi ou cocô fora do lugar</span>
+      <div class="option" onclick="selectOption(3, 'casa_toda', this)">
+        <span class="option-emoji">🏠</span>
+        <span class="option-text">Na casa toda — mija em qualquer canto, sem padrão</span>
         <div class="option-radio"></div>
       </div>
-      <div class="option" onclick="selectOption(3, 'guia', this)">
-        <span class="option-emoji">🦮</span>
-        <span class="option-text">Puxa demais na guia durante o passeio</span>
+      <div class="option" onclick="selectOption(3, 'chao', this)">
+        <span class="option-emoji">🚽</span>
+        <span class="option-text">No chão perto do lugar certo, mas erra</span>
         <div class="option-radio"></div>
       </div>
-      <div class="option" onclick="selectOption(3, 'latido', this)">
-        <span class="option-emoji">🔊</span>
-        <span class="option-text">Late sem parar — vizinhos, visitas, qualquer coisa</span>
+      <div class="option" onclick="selectOption(3, 'tapete', this)">
+        <span class="option-emoji">🟦</span>
+        <span class="option-text">Em cima/do lado do tapete higiênico</span>
         <div class="option-radio"></div>
       </div>
-      <div class="option" onclick="selectOption(3, 'pulo', this)">
-        <span class="option-emoji">🦘</span>
-        <span class="option-text">Pula em todo mundo na hora de cumprimentar</span>
+      <div class="option" onclick="selectOption(3, 'moveis', this)">
+        <span class="option-emoji">🛋️</span>
+        <span class="option-text">Na cama, no sofá ou em cima das coisas</span>
         <div class="option-radio"></div>
       </div>
-      <div class="option" onclick="selectOption(3, 'destroi', this)">
-        <span class="option-emoji">😤</span>
-        <span class="option-text">Destrói objetos, roupa, móveis quando sozinho</span>
-        <div class="option-radio"></div>
-      </div>
-      <div class="option" onclick="selectOption(3, 'desobedece', this)">
-        <span class="option-emoji">🙈</span>
-        <span class="option-text">Não obedece nenhum comando básico</span>
+      <div class="option" onclick="selectOption(3, 'sozinho', this)">
+        <span class="option-emoji">🚪</span>
+        <span class="option-text">Principalmente quando fica sozinho em casa</span>
         <div class="option-radio"></div>
       </div>
     </div>
@@ -1004,27 +999,37 @@ src="https://www.facebook.com/tr?id=1390710396449878&ev=PageView&noscript=1"/></
   <!-- ─── SCREEN 4: IMPACTO ────────────────────────────────────── -->
   <div class="screen" id="screen-4">
     <div class="step-label">Pergunta 4 de 5</div>
-    <h2 class="q-title" id="q4-title">Como isso afeta sua relação com ele?</h2>
-    <p class="q-sub">Sem julgamento — queremos entender de verdade.</p>
+    <h2 class="q-title" id="q4-title">O que você já tentou pra resolver o xixi?</h2>
+    <p class="q-sub">Pode marcar — a maioria já passou por tudo isso.</p>
     <div class="options" id="opts-4">
-      <div class="option" onclick="selectOption(4, 'estresso', this)">
+      <div class="option" onclick="selectOption(4, 'gotinhas', this)">
+        <span class="option-emoji">💧</span>
+        <span class="option-text">Receita caseira de borrifar — álcool, cânfora, citronela</span>
+        <div class="option-radio"></div>
+      </div>
+      <div class="option" onclick="selectOption(4, 'tapete', this)">
+        <span class="option-emoji">🟦</span>
+        <span class="option-text">Tapete higiênico, mas ele ignora ou erra do lado</span>
+        <div class="option-radio"></div>
+      </div>
+      <div class="option" onclick="selectOption(4, 'jornal', this)">
+        <span class="option-emoji">📰</span>
+        <span class="option-text">Vinagre ou produtos de limpeza no local</span>
+        <div class="option-radio"></div>
+      </div>
+      <div class="option" onclick="selectOption(4, 'bronca', this)">
         <span class="option-emoji">😤</span>
-        <span class="option-text">Me estresso e perco a paciência com frequência</span>
+        <span class="option-text">Já dei bronca, esfreguei o focinho, perdi a paciência</span>
         <div class="option-radio"></div>
       </div>
-      <div class="option" onclick="selectOption(4, 'vergonha', this)">
-        <span class="option-emoji">😳</span>
-        <span class="option-text">Evito levar a lugares por vergonha do comportamento</span>
+      <div class="option" onclick="selectOption(4, 'fora', this)">
+        <span class="option-emoji">🚪</span>
+        <span class="option-text">Levo pra fora toda hora, mas ele faz dentro mesmo assim</span>
         <div class="option-radio"></div>
       </div>
-      <div class="option" onclick="selectOption(4, 'familia', this)">
-        <span class="option-emoji">👨‍👩‍👧</span>
-        <span class="option-text">Minha família ou parceiro reclamam do cão</span>
-        <div class="option-radio"></div>
-      </div>
-      <div class="option" onclick="selectOption(4, 'limite', this)">
-        <span class="option-emoji">💔</span>
-        <span class="option-text">Já pensei em desistir, mas amo demais para isso</span>
+      <div class="option" onclick="selectOption(4, 'tudo', this)">
+        <span class="option-emoji">🤷</span>
+        <span class="option-text">Já tentei de tudo e nada resolveu</span>
         <div class="option-radio"></div>
       </div>
     </div>
@@ -1036,22 +1041,27 @@ src="https://www.facebook.com/tr?id=1390710396449878&ev=PageView&noscript=1"/></
   <!-- ─── SCREEN 5: COMPROMETIMENTO ──────────────────────────── -->
   <div class="screen" id="screen-5">
     <div class="step-label">Pergunta 5 de 5</div>
-    <h2 class="q-title" id="q5-title">Se você tivesse um plano claro, estaria disposto a dedicar 10 minutos por dia durante 7 dias?</h2>
-    <p class="q-sub">Sem equipamento. Sem adestrador. Só você e ele.</p>
+    <h2 class="q-title" id="q5-title">E como o xixi fora do lugar já te fez sentir?</h2>
+    <p class="q-sub">Pode ser sincero — isso fica entre nós.</p>
     <div class="options" id="opts-5">
-      <div class="option" onclick="selectOption(5, 'sim-total', this)">
-        <span class="option-emoji">💪</span>
-        <span class="option-text">Sim, com certeza — estou determinado a resolver isso</span>
+      <div class="option" onclick="selectOption(5, 'limpando', this)">
+        <span class="option-emoji">🧽</span>
+        <span class="option-text">Cansei de limpar — a casa vive com cheiro de xixi</span>
         <div class="option-radio"></div>
       </div>
-      <div class="option" onclick="selectOption(5, 'sim-provavelmente', this)">
-        <span class="option-emoji">😊</span>
-        <span class="option-text">Provavelmente sim — quero tentar com um método que funcione</span>
+      <div class="option" onclick="selectOption(5, 'vergonha', this)">
+        <span class="option-emoji">😳</span>
+        <span class="option-text">Tenho vergonha de receber visita em casa</span>
         <div class="option-radio"></div>
       </div>
-      <div class="option" onclick="selectOption(5, 'sim-duvidas', this)">
-        <span class="option-emoji">🤔</span>
-        <span class="option-text">Quero tentar — preciso que seja simples e rápido</span>
+      <div class="option" onclick="selectOption(5, 'desespero', this)">
+        <span class="option-emoji">😩</span>
+        <span class="option-text">Aquele desespero — sinto que ele faz tudo errado</span>
+        <div class="option-radio"></div>
+      </div>
+      <div class="option" onclick="selectOption(5, 'doar', this)">
+        <span class="option-emoji">💔</span>
+        <span class="option-text">Já cheguei a pensar em doar… mas amo demais pra isso</span>
         <div class="option-radio"></div>
       </div>
     </div>
@@ -1063,7 +1073,7 @@ src="https://www.facebook.com/tr?id=1390710396449878&ev=PageView&noscript=1"/></
   <!-- ─── SCREEN EMAIL ─────────────────────────────────────────── -->
   <div class="screen" id="screen-email">
     <div style="text-align:center;font-size:3rem;margin-bottom:16px;">📋</div>
-    <h2 class="q-title" style="text-align:center">Seu plano está quase pronto!</h2>
+    <h2 class="q-title" style="text-align:center">Seu Método 10 Minutos está quase pronto!</h2>
     <p class="q-sub" style="text-align:center;margin-bottom:22px;">Informe seu nome e e-mail para receber o acesso.</p>
 
     <div class="email-box">
@@ -1130,7 +1140,7 @@ src="https://www.facebook.com/tr?id=1390710396449878&ev=PageView&noscript=1"/></
 
     <!-- VSL PLAYER -->
     <div class="vsl-wrap">
-      <p class="vsl-label">▶ assista — seu plano personalizado está aqui</p>
+      <p class="vsl-label">▶ assista — seu Método 10 Minutos personalizado está aqui</p>
       <div class="vsl-player-box">
         <vturb-smartplayer id="vid-6a30530b1ead4fb7a53cdaf0" style="display:block;margin:0 auto;width:100%;"></vturb-smartplayer>
         <script type="text/javascript">
@@ -1372,9 +1382,9 @@ function goTo(target) {
   // Update dynamic titles
   const name = state.dogName || 'seu cão';
   if (target === 2) document.getElementById('q2-title').textContent = `Qual a idade de ${name}?`;
-  if (target === 3) document.getElementById('q3-title').textContent = `Qual comportamento do ${name} mais te estressa?`;
-  if (target === 4) document.getElementById('q4-title').textContent = `Como o comportamento de ${name} afeta sua relação com ele?`;
-  if (target === 5) document.getElementById('q5-title').textContent = `Se você tivesse um plano claro, estaria disposto a dedicar 10 minutos por dia para treinar o ${name} durante 7 dias?`;
+  if (target === 3) document.getElementById('q3-title').textContent = `Onde ${name} faz xixi que não devia?`;
+  if (target === 4) document.getElementById('q4-title').textContent = `O que você já tentou pra resolver o xixi de ${name}?`;
+  if (target === 5) document.getElementById('q5-title').textContent = `E como o xixi de ${name} fora do lugar já te fez sentir?`;
 }
 
 function updateProgress(target) {
@@ -1461,54 +1471,47 @@ function startLoading() {
 
 // ── Result content by problem ────────────────────────────────
 const PROBLEM_DATA = {
-  xixi: {
-    emoji:     '💧',
-    title:     'Problema de banheiro — totalmente tratável',
-    diagnosis: 'Com base nas suas respostas, {dogName} está no grupo de cães que ainda não aprendeu a associar o local certo ao comportamento de xixi. Isso não é birra nem teimosia — é falta de rotina estruturada. A boa notícia: é o comportamento que responde mais rápido ao método correto.',
-    villain:   'O vilão oculto aqui é o timing. A maioria dos tutores pune o cão minutos depois do erro — só que o cão não conecta a punição ao xixi, ele conecta à sua presença. Não é culpa sua: ninguém te ensinou que o reforço precisa acontecer nos primeiros 2 segundos após o comportamento certo.',
-    solution:  'O programa DogFlow ensina, em 7 dias, como criar a rotina de horário + local + reforço positivo no segundo exato em que ele acerta. A maioria dos donos começa a ver diferença já no Dia 3.',
+  casa_toda: {
+    emoji:     '🏠',
+    title:     'Xixi na casa toda — falta de um padrão claro',
+    diagnosis: 'Com base nas suas respostas, {dogName} faz xixi em qualquer canto porque nunca teve um local fixo associado ao xixi. Não é birra nem teimosia — é ausência total de rotina. A boa notícia: é o cenário que responde mais rápido quando se cria o padrão certo.',
+    villain:   'O vilão oculto é a falta de um único local + horário. Sem isso, cada cômodo vira banheiro. E punir depois não ensina nada: {dogName} associa a bronca à sua presença, não ao xixi. Ninguém te ensinou que o reforço precisa vir nos 2 segundos após o acerto.',
+    solution:  'O DogFlow ensina, em 7 dias, como definir local + horário + reforço positivo no segundo exato do acerto. A maioria dos donos vê {dogName} acertando já no Dia 3.',
   },
-  guia: {
-    emoji:     '🦮',
-    title:     'Puxão na guia — questão de associação aprendida',
-    diagnosis: 'Com base nas suas respostas, {dogName} aprendeu que puxar a guia funciona — porque sempre que puxou, você avançou. Não é culpa sua: é o jeito que a maioria das pessoas anda com o cão, sem saber.',
-    villain:   'O vilão oculto é simples: toda vez que você avançou com a guia esticada, você ensinou {dogName} que puxar é o caminho certo. Não é teimosia — é aprendizado. Você treinou sem saber. A solução é ensinar a associação inversa com consistência.',
-    solution:  'O DogFlow tem um módulo inteiro de passeio sem puxar. Em 7 dias, com 10 minutos por dia, você aprende a técnica correta e começa a ver diferença ainda durante o treinamento.',
+  chao: {
+    emoji:     '🚽',
+    title:     'Erra por pouco — quase lá, falta o ajuste fino',
+    diagnosis: 'Com base nas suas respostas, {dogName} já entende mais ou menos o lugar certo, mas ainda erra por perto. Isso é ótimo: significa que metade do caminho já está feita — falta só calibrar.',
+    villain:   'O vilão oculto é a inconsistência do reforço. Quando ele acerta ninguém comemora; quando erra, leva bronca. Sem o sinal certo na hora certa, {dogName} fica no "quase". Não é culpa sua — é timing.',
+    solution:  'O DogFlow ensina o gesto de reforço imediato que transforma o "quase" em acerto. Em 7 dias, 10 minutos por dia, a pontaria dele vira certeira.',
   },
-  latido: {
-    emoji:     '🔊',
-    title:     'Latido excessivo — comportamento com gatilho',
-    diagnosis: 'Com base nas suas respostas, {dogName} está usando o latido como estratégia de comunicação — seja por ansiedade, excitação ou porque aprendeu que funciona para chamar atenção.',
-    villain:   'O vilão oculto é a atenção involuntária. Cada vez que você mandou {dogName} calar, olhou para ele ou tentou acalmá-lo durante o latido, você reforçou o comportamento. Não é culpa sua — é instintivo querer reagir. O DogFlow ensina a resposta certa que quebra esse ciclo.',
-    solution:  'O DogFlow ensina controle de impulso e redirecionamento positivo — as duas ferramentas que funcionam para latido. Com consistência, a maioria dos cães melhora significativamente nas primeiras semanas.',
+  tapete: {
+    emoji:     '🟦',
+    title:     'Ignora o tapete higiênico — associação não foi feita',
+    diagnosis: 'Com base nas suas respostas, {dogName} erra o tapete porque ele nunca virou, na cabeça dele, o lugar do xixi. O tapete sozinho não ensina nada — é só um objeto no chão.',
+    villain:   'O vilão oculto é achar que o tapete ensina. Não ensina. O que ensina é o reforço no momento em que ele pisa e usa o tapete. Sem isso, ele faz do lado e ninguém corrige na hora. Ninguém te contou isso.',
+    solution:  'O DogFlow ensina como fazer {dogName} associar o tapete ao xixi de verdade, em 7 dias. A maioria para de errar o lado já nos primeiros dias.',
   },
-  pulo: {
-    emoji:     '🦘',
-    title:     'Pular nas pessoas — redirecionamento funciona',
-    diagnosis: 'Com base nas suas respostas, {dogName} pula porque foi recompensado por isso — mesmo sem querer. Cada vez que alguém o abraçou ou tentou empurrá-lo (qualquer atenção conta), o comportamento se fortaleceu.',
-    villain:   'O vilão oculto é a atenção negativa. Empurrar, xingar, até ignorar de forma dramática — tudo isso é atenção para {dogName}. Não é culpa sua: a reação natural de qualquer pessoa é reagir. O DogFlow ensina o que fazer nos primeiros 3 segundos que muda tudo.',
-    solution:  'O DogFlow ensina o redirecionamento positivo: como ignorar o pulo de forma consistente e recompensar as patas no chão. Simples na teoria, poderoso na prática.',
+  moveis: {
+    emoji:     '🛋️',
+    title:     'Xixi na cama/sofá — marcação ou rotina ausente',
+    diagnosis: 'Com base nas suas respostas, {dogName} faz xixi nos lugares mais altos e macios — muitas vezes marcação de território ou sinal de que não há rotina de banheiro definida. É tratável com o método certo.',
+    villain:   'O vilão oculto é o acesso livre + ausência de rotina. Sem horário e local definidos, o sofá e a cama (que têm o seu cheiro) viram alvo. Não é vingança — é instinto sem direcionamento.',
+    solution:  'O DogFlow ensina a rotina que tira o sofá e a cama da equação e leva o xixi pro lugar certo, em 7 dias, com 10 minutos por dia e sem punição.',
   },
-  destroi: {
-    emoji:     '😤',
-    title:     'Destruição — cão entediado ou ansioso precisa de rotina',
-    diagnosis: 'Com base nas suas respostas, {dogName} provavelmente destrói objetos por excesso de energia, tédio ou ansiedade de separação. Cães sem rotina de estímulo mental e físico encontram outras formas de ocupar o cérebro.',
-    villain:   'O vilão oculto é a ausência de rotina mental. O cérebro de um cão precisa de desafio diário — sem isso, ele cria o próprio entretenimento às custas dos seus móveis. Não é maldade: é biologia. 10 minutos de treino por dia libera mais energia mental do que 1 hora de passeio.',
-    solution:  'O DogFlow ensina os comandos básicos que criam rotina e estimulação mental. Um cão que treina 10 minutos por dia tem o cérebro ocupado e o comportamento destrutivo tende a diminuir naturalmente.',
-  },
-  desobedece: {
-    emoji:     '🙈',
-    title:     'Falta de comandos básicos — ponto de partida claro',
-    diagnosis: 'Com base nas suas respostas, {dogName} ainda não tem os fundamentos de obediência. Isso é na verdade o ponto de partida mais fácil: sem hábitos errados para corrigir, só novos para construir.',
-    villain:   'O vilão oculto é a inconsistência. {dogName} não desobedece — ele nunca recebeu um padrão claro para seguir. Cada membro da família provavelmente reage diferente ao mesmo comportamento. Cães precisam de regras consistentes, não de gritos ocasionais. Não é culpa sua — ninguém te ensinou isso.',
-    solution:  'O DogFlow começa do zero e ensina os 5 comandos essenciais em 7 dias: atenção, sentar, ficar, vir e não pular. Com 10 minutos por dia, a maioria dos cães responde em poucos dias.',
+  sozinho: {
+    emoji:     '🚪',
+    title:     'Xixi quando fica sozinho — componente emocional',
+    diagnosis: 'Com base nas suas respostas, {dogName} faz xixi principalmente na sua ausência — o que costuma ter um lado emocional (ansiedade de separação) somado à falta de rotina de banheiro.',
+    villain:   'O vilão oculto é a insegurança na sua ausência. Sem uma rotina previsível, ficar sozinho vira estresse — e o xixi é um sintoma disso. Brigar ao chegar só piora, porque ele associa sua volta a algo ruim.',
+    solution:  'O DogFlow combina rotina de banheiro + segurança na ausência. Em 7 dias, 10 minutos por dia, {dogName} fica mais calmo sozinho e o xixi fora do lugar tende a cair bastante.',
   },
 };
 
 function buildResult() {
   const name    = state.dogName  || 'seu cão';
   const problem = state.problem  || 'desobedece';
-  const data    = PROBLEM_DATA[problem] || PROBLEM_DATA.desobedece;
+  const data    = PROBLEM_DATA[problem] || PROBLEM_DATA.casa_toda;
 
   const firstName = state.userName.split(' ')[0] || 'Tutor';
 

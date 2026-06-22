@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa do Padrão — Eliane Barboza</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#F4ECE0;--paper:#FBF6EE;--marrom:#5A4636;--marrom2:#8A6E54;--gold:#C19B3C;--purple:#3a2350;--line:#D9C9B4}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#E6D9C6;color:var(--marrom);font-family:'Inter',sans-serif;padding:24px 12px;line-height:1.5}
+  .page{background:var(--paper);max-width:780px;margin:0 auto 26px;border-radius:6px;padding:54px 50px;box-shadow:0 14px 50px rgba(60,40,25,.18);position:relative}
+  .page::before{content:'';position:absolute;inset:14px;border:1px solid var(--line);border-radius:3px;pointer-events:none}
+  .kicker{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:8px}
+  h1{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:700;text-align:center;color:var(--marrom);line-height:1.05}
+  h1 em{font-style:italic;color:var(--gold)}
+  .sub{text-align:center;font-size:14px;color:var(--marrom2);max-width:480px;margin:14px auto 0;font-style:italic}
+  .divider{width:60px;height:2px;background:var(--gold);margin:22px auto;opacity:.7}
+  .bloco{margin:30px 0}
+  .bloco-num{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--marrom);color:#fff;font-family:'Cormorant Garamond',serif;font-size:17px;align-items:center;justify-content:center;margin-right:10px;vertical-align:middle}
+  .bloco-titulo{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;display:inline}
+  .bloco-guia{font-size:13px;color:var(--marrom2);margin:8px 0 16px;font-style:italic}
+  .ger{display:grid;grid-template-columns:130px 1fr 150px;gap:12px;align-items:center;padding:11px 0;border-bottom:1px dashed var(--line)}
+  .ger-label{font-weight:600;font-size:13px;color:var(--marrom)}
+  .ger-label span{display:block;font-size:11px;color:var(--marrom2);font-weight:400}
+  .linha{border-bottom:1px solid var(--line);min-height:24px}
+  .check-list{display:grid;grid-template-columns:1fr 1fr;gap:9px 22px;margin-top:6px}
+  .check{display:flex;align-items:center;gap:9px;font-size:14px}
+  .box{width:17px;height:17px;border:1.6px solid var(--marrom2);border-radius:4px;flex:none}
+  .campo{border:1px solid var(--line);border-radius:8px;background:#fff;min-height:60px;padding:12px;font-size:14px;color:var(--marrom2)}
+  .duas{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+  .col-titulo{font-weight:600;font-size:13px;margin-bottom:8px;text-align:center;padding:6px;border-radius:6px}
+  .col-meu{background:rgba(193,155,60,.14);color:var(--marrom)}
+  .col-herd{background:rgba(58,35,80,.10);color:var(--purple)}
+  .col .linha{margin-bottom:14px}
+  .corte{background:linear-gradient(135deg,rgba(193,155,60,.10),rgba(90,70,54,.06));border:1px solid var(--line);border-radius:10px;padding:22px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:21px;line-height:2}
+  .corte u{text-decoration:none;border-bottom:1.5px solid var(--gold);padding:0 28px}
+  .ritual{width:100%;border-collapse:collapse;margin-top:10px}
+  .ritual td{border-bottom:1px solid var(--line);padding:12px 8px;font-size:13.5px;vertical-align:middle}
+  .ritual .dia{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--gold);width:54px;font-weight:600}
+  .ritual .ck{width:30px;text-align:right}
+  .nota{font-size:13px;color:var(--marrom2);font-style:italic;text-align:center;margin-top:20px;line-height:1.7}
+  .rodape{text-align:center;font-size:11px;color:var(--marrom2);letter-spacing:.1em;margin-top:30px}
+  @media print{body{background:#fff;padding:0}.page{box-shadow:none;margin:0;page-break-after:always;border-radius:0}}
+  @media(max-width:640px){.page{padding:36px 22px}.ger{grid-template-columns:1fr;gap:6px}.check-list,.duas{grid-template-columns:1fr}h1{font-size:32px}}
+</style></head>
+<body>
+
+<!-- PÁGINA 1 — capa interna + blocos 1 e 2 -->
+<div class="page">
+  <div class="kicker">Autoconhecimento · Padrões Ancestrais</div>
+  <h1>Mapa do <em>Padrão</em></h1>
+  <p class="sub">Em uma tarde, você mapeia 3 gerações, enxerga o padrão que se repete — e entende de onde ele veio.</p>
+  <div class="divider"></div>
+
+  <div class="bloco">
+    <span class="bloco-num">1</span><span class="bloco-titulo">As 3 gerações — a árvore do padrão</span>
+    <p class="bloco-guia">Não precisa de história longa. Uma palavra por geração pro "clima" das relações. A repetição vai saltar aos olhos.</p>
+    <div class="ger"><div class="ger-label">Avós<span>geração 1</span></div><div class="linha"></div><div class="linha"></div></div>
+    <div class="ger"><div class="ger-label">Pais<span>geração 2</span></div><div class="linha"></div><div class="linha"></div></div>
+    <div class="ger"><div class="ger-label">Você<span>geração 3 · suas relações</span></div><div class="linha"></div><div class="linha"></div></div>
+    <p class="bloco-guia" style="margin-top:8px">← nome &nbsp;·&nbsp; 1 palavra pro clima (silêncio, controle, ausência, sacrifício…) →</p>
+  </div>
+
+  <div class="bloco">
+    <span class="bloco-num">2</span><span class="bloco-titulo">O padrão que se repete</span>
+    <p class="bloco-guia">Marque o que aparece em mais de uma geração. O que está em 2 ou 3 = o seu padrão. Ele não começou em você.</p>
+    <div class="check-list">
+      <div class="check"><div class="box"></div>abandono / ir embora</div>
+      <div class="check"><div class="box"></div>controle / ciúme</div>
+      <div class="check"><div class="box"></div>silêncio / não falar o que sente</div>
+      <div class="check"><div class="box"></div>"dar conta sozinha"</div>
+      <div class="check"><div class="box"></div>amor que dói / sofrimento</div>
+      <div class="check"><div class="box"></div>traição</div>
+      <div class="check"><div class="box"></div>adoecer pra ser cuidada</div>
+      <div class="check"><div class="box"></div>submissão</div>
+      <div class="check"><div class="box"></div>raiva guardada</div>
+      <div class="check"><div class="box"></div>outro: <span class="linha" style="flex:1"></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- PÁGINA 2 — blocos 3, 4, 5 -->
+<div class="page">
+  <div class="bloco">
+    <span class="bloco-num">3</span><span class="bloco-titulo">A frase que se repete</span>
+    <p class="bloco-guia">Que frase sua avó ou sua mãe diria sobre amor — ou sobre homem/mulher? Essa frase é a lealdade invisível: você repete pra "pertencer".</p>
+    <div class="campo">Escreva aqui…<br><br></div>
+    <p class="bloco-guia" style="margin-top:8px">Âncoras: "homem não presta" · "amor é sofrimento" · "tem que aguentar" · "sozinha eu não erro" · "ninguém fica".</p>
+  </div>
+
+  <div class="bloco">
+    <span class="bloco-num">4</span><span class="bloco-titulo">O que é meu × o que eu herdei</span>
+    <p class="bloco-guia">Você não é culpada pelo padrão. Mas a partir de hoje você é responsável por onde ele para.</p>
+    <div class="duas">
+      <div class="col"><div class="col-titulo col-meu">Isto é MEU (eu escolho)</div><div class="linha"></div><div class="linha"></div><div class="linha"></div></div>
+      <div class="col"><div class="col-titulo col-herd">Isto eu HERDEI (peso que nem é meu)</div><div class="linha"></div><div class="linha"></div><div class="linha"></div></div>
+    </div>
+  </div>
+
+  <div class="bloco">
+    <span class="bloco-num">5</span><span class="bloco-titulo">O ponto de corte</span>
+    <p class="bloco-guia">Escreva no presente. Honre a origem e devolva, com respeito, o que não é seu.</p>
+    <div class="corte">O ciclo de <u>&nbsp;</u> para em mim.<br>Eu fico com <u>&nbsp;</u><br>e devolvo com respeito o que é <u>&nbsp;</u>.</div>
+  </div>
+  <div class="rodape">MAPA DO PADRÃO · ELIANE BARBOZA DA SILVA · ESTÂNCIA EQUILÍBRIO</div>
+</div>
+
+<!-- PÁGINA 3 — ritual de 7 dias -->
+<div class="page">
+  <div class="kicker">O Ritual</div>
+  <h1>7 dias para <em>soltar</em></h1>
+  <p class="sub">Um micro-passo por dia, 5 a 10 minutos. Marque o quadradinho ao terminar.</p>
+  <div class="divider"></div>
+  <table class="ritual">
+    <tr><td class="dia">Dia 1</td><td>Preencher o Mapa — blocos 1 e 2 (as gerações e o padrão)</td><td class="ck"><div class="box" style="margin-left:auto"></div></td></tr>
+    <tr><td class="dia">Dia 2</td><td>Escrever a frase herdada (bloco 3) e ler em voz alta</td><td class="ck"><div class="box" style="margin-left:auto"></div></td></tr>
+    <tr><td class="dia">Dia 3</td><td>Separar "meu × herdei" (bloco 4)</td><td class="ck"><div class="box" style="margin-left:auto"></div></td></tr>
+    <tr><td class="dia">Dia 4</td><td>Carta curta (não enviada) pra quem te passou o padrão</td><td class="ck"><div class="box" style="margin-left:auto"></div></td></tr>
+    <tr><td class="dia">Dia 5</td><td>Escrever sua frase de corte (bloco 5) e colar onde você vê</td><td class="ck"><div class="box" style="margin-left:auto"></div></td></tr>
+    <tr><td class="dia">Dia 6</td><td>Notar 1 vez no dia em que o padrão tentou se repetir — só notar</td><td class="ck"><div class="box" style="margin-left:auto"></div></td></tr>
+    <tr><td class="dia">Dia 7</td><td>Reler o mapa e escrever: "o que mudou em como eu me vejo"</td><td class="ck"><div class="box" style="margin-left:auto"></div></td></tr>
+  </table>
+  <p class="nota">Em 7 dias você não "curou" nada — você <strong>enxergou</strong> o ciclo.<br>E enxergar é onde o corte começa.</p>
+  <div class="rodape">Conteúdo de autoconhecimento · não substitui acompanhamento psicológico</div>
+</div>
+
+</body></html>

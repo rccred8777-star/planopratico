@@ -1,14 +1,51 @@
 # Log de Operações — Plano Prático
 
+## 📍 PESQUISA TERAPIA (Eliane) — virada de foco 22/06
+- Dono: **encerrar pesquisa DogFlow, foco máximo em terapia** (dores latentes de hoje: divórcio, depressão, família, burnout, ansiedade, pensamento acelerado).
+- Espião reconfigurado: DogFlow + B2B **pausados**; **Terapia B2C ativa com 16 keywords de dor crua**.
+- Coleta EW5 rodada → **97 vídeos + 2.680 comentários frescos**. WebSearch trouxe dados macro 2026.
+- **Relatório:** `docs/product/RELATORIO_ESPIAO_TERAPIA_DORES_LATENTES.md`. Achados-chave: pico de dor (mulher 35-49 = público Eliane); dor transversal = **INVALIDAÇÃO** ('é frescura/ninguém entende'); tema que mais engaja (90k+ views) = **repetição de padrões** (timing perfeito pro Mapa do Padrão). Ganchos de copy prontos.
+
+---
+
+
 > Registro cronológico de todas as ações executadas no projeto.
+
+---
+
+## 📍 ESTADO ATUAL — 21/06/2026 (sessão Claude — maratona)
+
+### Regras / processo
+- **CLAUDE.md ganhou REGRAS INVIOLÁVEIS no topo:** nunca sair do plano · ler wiki antes · finalizar cada tarefa atualizando a wiki · nunca mentir/declarar sem fatos · ordem pesquisa→copy→design. (correção do dono: eu estava improvisando e pulando pro criativo antes da copy.)
+
+### Eliane — site institucional NO AR
+- **estanciaequilibrio.com.br** (DNS Hostinger A→76.13.170.19 · NPM proxy host 9 · SSL Let's Encrypt). Compliance limpo.
+- **Painel auto-editável** `/painel/` (login `eliane@estanciaequilibrio.com.br` / `Estancia2026`) → Supabase `site_content` + bucket `site-assets`. Site renderiza sozinho. Base da esteira de agência.
+- **Mapa do Padrão** landing `/mapa` com VSL HeyGen + checkout `pay.kiwify.com.br/8TmNUn1` + UTMify. Artefato desenhado (`/mapa/mapa-artefato.html`).
+
+### DogFlow — backend RESSUSCITADO + quiz reformulado
+- **WhatsApp voltou:** token expirou 14/06 → **token permanente System User** (nunca expira). Trocado no WaCRM (`whatsapp_config`) + n8n (`WA_BUSINESS_TOKEN`). Envio testado OK.
+- Backend estava só MUDO: **W1, W2, W3, W4, atendentes** ativos de novo. 8 templates sincronizados no WaCRM.
+- **Recovery virou esteira:** `recuperacao_geral_1/2/3` ({{1}}nome {{2}}produto {{3}}link posicional) submetidos — **PENDING ~24h**. Fichas `bot_config.link_venda` prontas. **W4 PAUSADO** até aprovar+religar.
+- **Quiz — BUG GRAVE corrigido (22/06):** o quiz estava só meio reformulado — perguntas de xixi no HTML, mas JS e resultado ainda de OBEDIÊNCIA (goTo reescrevia títulos p/ texto de comando; `PROBLEM_DATA` indexado por chaves velhas → resultado caía no fallback "5 comandos: sentar/ficar/vir"). Corrigido: títulos 3/4/5 = xixi + nome do cão; `PROBLEM_DATA` reescrito com 5 diagnósticos de xixi (casa_toda/chao/tapete/moveis/sozinho); fallback→casa_toda. Verificado HTTP 200. Backup `.bak` na VPS. ⏳ PENDENTE: adicionar +3 perguntas de engajamento (porte/frequência/micro-compromisso) que o dono pediu.
+- **Quiz `/quiz` 100% xixi:** nome chiclete "Método 10 Minutos" + One Belief (repelente pra sempre × rotina) + Q3/Q4/Q5 com dores reais (casa toda, gotinhas, tapete, bateu, quis doar). Pixel 1390. ⚠️ falta mandar tráfego pro /quiz.
+- **Espião limpo:** 197 anúncios re-taggeados — DogFlow (83) + Mapa/Eliane (114) separados.
+- **Esteira Espião — AUDITORIA + correções (22/06):** todos os 5 workflows ATIVOS (EW1/EW2/EW3/EW4/EW6). Coleta OK (199 ads, 4348 comentários). Achados/corrigidos: (1) **76 ads travados em `scraping`** (EW2 afogado pela semeadura de 18/06) → reprocessados espaçados 12s via webhook `espiao-transcricao` → **46 recuperados p/ transcribed** (transcripts 109→155), ~9 viraram error (sem vídeo), **21 ainda travados** (provável snapshot FB expirado, baixo retorno). (2) **EW6 atrasado** (15/107 vídeos analisados) → lote **15→40** + cron **quinta→seg+qui** (`20 2 * * 1,5`); n8n reiniciado. Scrapfly em 7% (12.334/200k) — folga. ⏳ Possível: pausar keywords de terapia no `espiao_config` se Eliane não for prioridade.
+- **EW5 YouTube (22/06):** dono achou que "parou de coletar"; diagnóstico = NÃO quebrou, era cron **semanal** (dados 18-19 eram semeadura manual). Rodei manual → +627 comentários, +12 vídeos (total **3448/95**). Corrigido **bug do wrapper** (gravava timestamp fixo "18/06" em todo run → agora `$(date)` real). **Cron mudado pra DIÁRIO** (`0 10 * * *`, 10h UTC) a pedido do dono — ⚠️ vigiar cota da API YouTube (3 projetos ativos; se falhar em dia de pico aparece no log `/opt/planopratico/logs/ew5_youtube.log`). Script é idempotente (upsert on_conflict).
+- **9 anúncios estáticos DogFlow Xixi PRONTOS** (copy→design, fundamentado na pesquisa) em `/review/ads-xixi/` (galeria `planopratico.shop/review/ads-xixi/`). Pesquisa Espião: tom vencedor do nicho = **empatia** (44/197); ângulo campeão = **reframe** ("não é teimosia, é X"); objeção nº1 da VoC = "meu cachorro é muito teimoso". Estilo (decisão designer): **nativo/empático** — foto de cão fofo + paleta quente creme/caramelo (NÃO preto/vermelho), Poppins, pílula CTA + selo "Método 10 Minutos · 7 dias · sem punição". 9 ângulos micro-lead (José). ✅ **APROVADOS pelo dono.**
+- **DECISÃO TRAVADA (dono, 21/06):** subir os 9 cards na campanha Xixi, **cada conjunto = 1 vídeo + 1 card**, e **TUDO apontando pro /quiz** (vídeos atuais vão de /dogflow → /quiz). Dono: "não troquei [o destino ainda], não temos nada relevante até agora, manda tudo pro quiz" — ou seja, NÃO proteger os "vencedores" V06/V02 (resultado imaturo). CTA nativo Meta = "Saiba mais". Pareamento vídeo↔card por ângulo definido. ⚙️ Incluir UTMs no link do /quiz (atribuição estava utm:None no Kiwify). ⏳ EXECUÇÃO PENDENTE: bloqueada por indisponibilidade temporária do executor de comando/Windsor (classificador fora). Assim que voltar: verificar token ads_management → reapontar 9 vídeos pra /quiz → criar 9 ads de imagem (cards) nos conjuntos → /quiz.
+- **RESOLVIDO o caminho de execução (21/06):** o token acessível ao Claude é só o do WhatsApp (`whatsapp_business_*`, SEM `ads_management`) → **Claude NÃO sobe anúncios**. As chaves de Ads estão com o **AGENTE CHEFE** (confirmado pelo dono). → Handoff completo escrito e sincronizado na VPS em `docs/MENSAGEM_PARA_O_AGENTE_CHEFE.md` (3 tarefas: reapontar 9 vídeos→/quiz · subir 9 cards→/quiz CTA "Saiba mais" · corrigir UTMs/atribuição). **Bola com o agente chefe.**
+
+### Skills guardadas
+- José (manual-mestre) + Davi Meurer + Cauê Puglies + Slender (podcast Segredos da Escala).
 
 ---
 
 ## 📍 ESTADO ATUAL — 20/06/2026 (sessão Claude)
 
 ### DogFlow — VENDENDO 🎉
-- **Campanha Xixi Máxima LANÇADA e ATIVA** (`120248854033500623`): 9 conjuntos 1×1×1, R$90/dia, 9 vídeos (avatar HeyGen + app na tela via ffmpeg), pixel `1390710396449878`. Já com **3 compras atribuídas** no Meta.
-- Campanha antiga "[DogFlow] Teste 1-3-2" (`120248611748940623`) segue ativa (decisão do dono); 0 venda, só engajamento.
+- **Campanha Xixi Máxima LANÇADA e ATIVA** (`120248854033500623`): 9 conjuntos 1×1×1, R$90/dia, 9 vídeos (avatar HeyGen + app na tela via ffmpeg), pixel `1390710396449878`. **2 vencedores: V06 e V02 (ROI ~5)**; outros 7 ainda com 0 venda mas pouco gasto (~R$10). Meta: achar 4 c/ ROI≥2,5 → Fase 2.
+- Campanha antiga "[DogFlow] Teste 1-3-2" — **EXCLUÍDA 20/06** (0 venda; método Máxima: excluir campanha ruim pra não sujar histórico da conta). Conta agora só com a Xixi.
 - **1ª VENDA REAL:** Rogéria Rocha, R$27, 20/06 — rastreio ponta a ponta OK (Kiwify→Supabase; pixel Purchase disparando).
 - **Pixel corrigido:** era `1076` (órfão, não existia na conta) → agora `1390710396449878` na landing+obrigado+quiz **e** no Kiwify (domínio go.kiwify.com.br, toggles pix/boleto OFF).
 - **Meta conectado no Windsor** (conta planopratico) — gestor já lê ROAS/compras.

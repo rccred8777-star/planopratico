@@ -7,6 +7,7 @@
 CREATE TABLE IF NOT EXISTS competitor_ads (
   id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at          TIMESTAMPTZ DEFAULT NOW(),
+2
 
   -- Origem
   keyword             TEXT NOT NULL,              -- palavra-chave usada na busca

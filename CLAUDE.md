@@ -1,5 +1,15 @@
 > 📨 AGENTE CHEFE: há mensagem pendente pra você em docs/MENSAGEM_PARA_O_AGENTE_CHEFE.md (campanha DogFlow Xixi).
 
+## ⛔ REGRAS INVIOLÁVEIS (acima de tudo, sempre)
+
+1. **NUNCA saia do plano.** Existe um plano acordado — siga-o. Não improvise, não tome direção própria, não comece a executar sem método. Se algo não está no plano, **pergunte antes**. Frase ou ideia solta do dono pode ser **exemplo**, não diretriz final — confirme antes de tratar como decisão.
+2. **Leia a WIKI ANTES de qualquer tarefa:** `docs/wiki/log.md` (estado atual), `decisoes.md`, `metricas.md`, `links-operacao.md`. Não aja sem ler o estado.
+3. **Finalize CADA tarefa atualizando a wiki** (`docs/wiki/log.md` — o que foi feito + estado novo). Tarefa que não foi registrada na wiki **não está concluída**.
+4. **NUNCA mentir, enganar, ludibriar, nem declarar sem fatos.** Só afirme o que **verificou**. Não testou → diga que não testou. Falhou → mostre o erro real. Proibido dizer "está pronto/funcionando" sem prova. Sem hedge, sem inventar, sem maquiar resultado.
+5. **Ordem de criativo: pesquisa (VoC) → COPY → design.** Nunca pular pro criativo antes da copy fundamentada na pesquisa. Pensar como designer: intencional e sequencial, nunca no chute.
+
+---
+
 # PlanoPratico — Contexto para Claude
 
 ## O que é este projeto
