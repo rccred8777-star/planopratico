@@ -1,5 +1,14 @@
 # Log de Operações — Plano Prático
 
+## 🔧 FIX webhook→n8n (boas-vindas/owner não disparavam) — 23/06
+- **Sintoma:** dono comprou Desafio 7d (ricardo.splitcenter@gmail.com, 01:50 UTC), recebeu só email do Kiwify; **não veio WhatsApp boas-vindas nem aviso de venda**, e app "não liberou".
+- **Diagnóstico (com prova no banco):** compra GRAVADA certo pelo webhook plural (`product`+`kiwify_order_id`+`user_id` linkado, `status=active`) → **acesso provisionado** (o app deveria abrir; lock que o dono viu foi janela do restart 01:33 + sessão velha). MAS o n8n **não executou NADA desde 06-22 18:55** — W1 boas-vindas (ATIVO, webhook `kiwify-compra` registrado) não rodou pra compra.
+- **Causa raiz:** `forwardToN8n` no webhook plural chamava a URL **pública** `https://n8n.planopratico.shop` → de dentro do container falha por **hairpin NAT** (dogflow e n8n estão na MESMA rede `planopratico_net`). E o forward **engolia o erro** (não checava `res.ok`) → falha calada.
+- **Correção (commit `170aab4`, deployed):** forward via URL **interna** `http://n8n:5678` (override `N8N_INTERNAL_URL`) + `res.ok` check + timeout 8s. tsc 0.
+- **Re-disparo manual:** POST no W1 com payload real → **exec 624 success às 02:25** → WhatsApp boas-vindas + aviso de venda entregues. W1 validado ponta-a-ponta.
+- ⚠️ Pendente: validação do forward INTERNO do container só na próxima compra real (não dá pra exec no container de prod — bloqueado). App: dono fazer login limpo p/ confirmar liberação.
+- ⚠️ Nota: W1 NÃO manda email — manda WhatsApp+aviso owner. E pra usuário já existente o webhook PULA o convite Supabase → de nós o cliente não recebe email nenhum (só Kiwify). Avaliar email de boas-vindas próprio.
+
 ## 🎯 PIXEL META instalado no app DogFlow (Fase 4) — 22/06
 - **Correção de rota honesta:** mensagem anterior dizia "Pixel commitado" — era FALSO, não havia `fbq`/`InitiateCheckout` em nenhum arquivo. Verificado via grep no repo dogflow + VPS. O 1º `DEPLOY_CAOCALMO.sh` rodou mas saiu todo-CACHED (no-op, sem Pixel).
 - **Implementado de verdade:** `src/lib/fbpixel.ts` (ID `1390710396449878` + `fbqTrack` seguro + `parsePrice`), `src/components/MetaPixel.tsx` (snippet base + **PageView** no load e em navegação SPA), montado no `layout.tsx` (todas as páginas). **InitiateCheckout** no CTA Cão Calmo (`ModuleList.tsx`, R$47 BRL → Kiwify TDTPcu6) e nos CTAs de assinatura (`planos/page.tsx`, valor do preço).
