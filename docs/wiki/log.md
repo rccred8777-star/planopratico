@@ -1,5 +1,14 @@
 # Log de Operações — Plano Prático
 
+## 🐛 FIX CRÍTICO detecção de produto no webhook + checkout trocado — 23/06
+- **Sintoma:** compra paga do Cão Calmo (R$47, Pix, order OjCmdIk/f5419f88) registrou como `desafio` → módulo não destravou. Cliente recebeu email/WhatsApp mas sem acesso.
+- **Bug 1 (checkout trocado):** código usava `TDTPcu6` como Cão Calmo, mas `TDTPcu6` é o checkout do **Desafio**. Cão Calmo real = **`gmD7yDF`**. O botão no app mandava quem queria Cão Calmo pro checkout do Desafio (impossível comprar). Corrigido em ModuleList + webhooks (commit `9327ac8`).
+- **Bug 2 (detecção, raiz):** capturei o payload real do Kiwify (log temporário) → o nome vem em **`Product.product_name`** (top-level, SEM wrapper `order`) e **NÃO há `checkout_id` no payload**. O código lia `body.order.Product.name` → sempre vazio → TODA compra caía no default `dogflow_7dias`. Desafio "funcionava" por sorte (é o default). Corrigido p/ detecção por `Product.product_name` por nome (commit `05f695a`). Log verboso (PII) removido.
+- **Validação:** repliquei a compra REAL do Cão Calmo pelo webhook corrigido (mesmo order_id/dados) → row virou `caocalmo`/`dogflow_caocalmo`. Módulo `dogflow_caocalmo` (unlock_hours 0) → destrava. Lixo de teste (johndoe@example.com) limpo.
+- ⚠️ **Formato Kiwify documentado (importante):** payload é flat (sem `order`), nome em `Product.product_name`, evento em `webhook_event_type` (order_approved/billet_created/etc), sem checkout_id. Detecção SEMPRE por nome do produto.
+- ⚠️ Kiwify tem 2 webhooks: 1 → UTMify (rastreio), 1 → `app.planopratico.shop/api/webhooks/kiwify?token=xfrktu3mbhz` (ambos "Todos os produtos"). "Testar Webhook" manda payload FAKE (Example product/johndoe), não serve p/ testar produto real.
+- ⏳ Cão Silencioso NÃO está montado (link no código morto `Z4f6t5U`; sem detecção/módulo). Não ativar sem wire completo.
+
 ## 🔧 FIX webhook→n8n (boas-vindas/owner não disparavam) — 23/06
 - **Sintoma:** dono comprou Desafio 7d (ricardo.splitcenter@gmail.com, 01:50 UTC), recebeu só email do Kiwify; **não veio WhatsApp boas-vindas nem aviso de venda**, e app "não liberou".
 - **Diagnóstico (com prova no banco):** compra GRAVADA certo pelo webhook plural (`product`+`kiwify_order_id`+`user_id` linkado, `status=active`) → **acesso provisionado** (o app deveria abrir; lock que o dono viu foi janela do restart 01:33 + sessão velha). MAS o n8n **não executou NADA desde 06-22 18:55** — W1 boas-vindas (ATIVO, webhook `kiwify-compra` registrado) não rodou pra compra.
