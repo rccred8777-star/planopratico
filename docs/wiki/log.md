@@ -7,7 +7,8 @@
 - **Correção (commit `170aab4`, deployed):** forward via URL **interna** `http://n8n:5678` (override `N8N_INTERNAL_URL`) + `res.ok` check + timeout 8s. tsc 0.
 - **Re-disparo manual:** POST no W1 com payload real → **exec 624 success às 02:25** → WhatsApp boas-vindas + aviso de venda entregues. W1 validado ponta-a-ponta.
 - ⚠️ Pendente: validação do forward INTERNO do container só na próxima compra real (não dá pra exec no container de prod — bloqueado). App: dono fazer login limpo p/ confirmar liberação.
-- ⚠️ Nota: W1 NÃO manda email — manda WhatsApp+aviso owner. E pra usuário já existente o webhook PULA o convite Supabase → de nós o cliente não recebe email nenhum (só Kiwify). Avaliar email de boas-vindas próprio.
+- ⚠️ Nota: W1 NÃO manda email — manda WhatsApp+aviso owner. E pra usuário já existente o webhook PULA o convite Supabase → de nós o cliente não recebe email nenhum (só Kiwify).
+- ✅ **EMAIL DE BOAS-VINDAS (commit `11b13dc`, deployed):** webhook agora manda email de acesso a TODO comprador via workflow n8n "Enviar Email Manual" (SMTP Hostinger contato@planopratico.shop) em `http://n8n:5678/webhook/enviar-email`. Cobre o gap do recorrente. Validado: rede interna OK (`/healthz`=ok via container efêmero na planopratico_net = fix hairpin PROVADO), e envio real exec 629 `success` 02:32 p/ ricardo.splitcenter. Email: link app + instrução criar senha.
 
 ## 🎯 PIXEL META instalado no app DogFlow (Fase 4) — 22/06
 - **Correção de rota honesta:** mensagem anterior dizia "Pixel commitado" — era FALSO, não havia `fbq`/`InitiateCheckout` em nenhum arquivo. Verificado via grep no repo dogflow + VPS. O 1º `DEPLOY_CAOCALMO.sh` rodou mas saiu todo-CACHED (no-op, sem Pixel).
