@@ -1,5 +1,14 @@
 # Log de Operações — Plano Prático
 
+## 🧩 PROJETO CRM — Atendimento automático como serviço (SaaS/agência) — 23/06
+- Ideia: vender atendente IA no WhatsApp pra OUTRAS empresas usando a stack atual (WaCRM + n8n + Cloud API + Supabase + IA). Status: **PROJETO/pesquisa, nada construído.**
+- **Achados:** WaCRM é template Next.js+Supabase **licença MIT** (livre pra revender/SaaS) e **multi-tenant nativo** (tabela `accounts` + `account_invitations` + 120 RLS por `is_account_member(account_id)`). WhatsApp **oficial**. **Sem billing** no schema.
+- **Falta (3):** #1 atendente IA por cliente (n8n rotear por `phone_number_id`→account, tabela `ai_agent_configs`); #2 billing (Kiwify/Stripe + limites); #3 contrato/DPA+preço = **já temos**.
+- **Porteira:** número/WABA próprio por cliente (onboarding Meta; virar Tech Provider pra escalar).
+- **Plano:** construir #1 primeiro, billing manual no piloto, piloto com 1 cliente; migrar DogFlow p/ ser "1º cliente" da estrutura.
+- Doc completo: `docs/plans/PROJETO_CRM_SAAS_ATENDIMENTO_V1.md`.
+
+
 ## 🐛 FIX CRÍTICO detecção de produto no webhook + checkout trocado — 23/06
 - **Sintoma:** compra paga do Cão Calmo (R$47, Pix, order OjCmdIk/f5419f88) registrou como `desafio` → módulo não destravou. Cliente recebeu email/WhatsApp mas sem acesso.
 - **Bug 1 (checkout trocado):** código usava `TDTPcu6` como Cão Calmo, mas `TDTPcu6` é o checkout do **Desafio**. Cão Calmo real = **`gmD7yDF`**. O botão no app mandava quem queria Cão Calmo pro checkout do Desafio (impossível comprar). Corrigido em ModuleList + webhooks (commit `9327ac8`).
