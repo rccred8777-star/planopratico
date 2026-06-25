@@ -1,5 +1,9 @@
 # Log de Operações — Plano Prático
 
+## 🥇 REGRA DE OURO adicionada (24/06)
+- "A VERDADE É A FONTE DA VERDADE" — nunca declarar/afirmar sem verificar na fonte; se não checou, dizer "não verifiquei". Gravada no topo das REGRAS INVIOLÁVEIS (CLAUDE.md) + memória `feedback_verdade_fonte`.
+- Origem: hoje afirmei errado que o /quiz "não tinha imagem" e "tinha VSL no topo" — na verdade a hero é um `<img>` do Unsplash (o LCP) e a VSL está na tela de resultado. Lição: greps/filtros podem dar falso-negativo (filtrei imagem por `.jpg`, perdi URL com query).
+
 ## 🧩 PROJETO CRM — Atendimento automático como serviço (SaaS/agência) — 23/06
 - Ideia: vender atendente IA no WhatsApp pra OUTRAS empresas usando a stack atual (WaCRM + n8n + Cloud API + Supabase + IA). Status: **PROJETO/pesquisa, nada construído.**
 - **Achados:** WaCRM é template Next.js+Supabase **licença MIT** (livre pra revender/SaaS) e **multi-tenant nativo** (tabela `accounts` + `account_invitations` + 120 RLS por `is_account_member(account_id)`). WhatsApp **oficial**. **Sem billing** no schema.

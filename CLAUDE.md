@@ -2,6 +2,8 @@
 
 ## ⛔ REGRAS INVIOLÁVEIS (acima de tudo, sempre)
 
+🥇 **REGRA DE OURO — A VERDADE É A FONTE DA VERDADE.** Nunca declarar, informar ou afirmar nada sem **base verdadeira**. Verifique no real (código servido, banco, logs, o arquivo/HTML de fato) ANTES de afirmar. Se não verificou, diga **"não verifiquei"** — nunca afirme como fato. Quando o resultado de um grep/filtro surpreender, desconfie do método antes de concluir (ex.: filtrar imagem por `.jpg` perde URLs com query string). Não deduzir o que dá pra checar.
+
 1. **NUNCA saia do plano.** Existe um plano acordado — siga-o. Não improvise, não tome direção própria, não comece a executar sem método. Se algo não está no plano, **pergunte antes**. Frase ou ideia solta do dono pode ser **exemplo**, não diretriz final — confirme antes de tratar como decisão.
 2. **Leia a WIKI ANTES de qualquer tarefa:** `docs/wiki/log.md` (estado atual), `decisoes.md`, `metricas.md`, `links-operacao.md`. Não aja sem ler o estado.
 3. **Finalize CADA tarefa atualizando a wiki** (`docs/wiki/log.md` — o que foi feito + estado novo). Tarefa que não foi registrada na wiki **não está concluída**.
